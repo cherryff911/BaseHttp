@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#008577</color>
+    <color name="colorPrimaryDark">#00574B</color>
+    <color name="colorAccent">#D81B60</color>
+    <color name="bule_one">#5584F6</color>
+    <color name="gary_one">#9CA3AF</color>
+    <color name="line">#C7CFDA</color>
+
+</resources>

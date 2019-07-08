@@ -1,0 +1,17 @@
+package com.jft.tsyc.vo
+
+import com.jft.tsyc.base.BaseVo
+
+/**
+ * @Author : YFL  is Creating a porject in tsyc
+ * @Package com.example.tsyc.vo
+ * @Email : yufeilong92@163.com
+ * @Time :2019/7/8 14:59
+ * @Purpose :登录vo
+ */
+data class LoginVo(var result: Result?=null) : BaseVo()
+data class Result(
+    val key: String,
+    val userid: Int,
+    val username: String
+)
