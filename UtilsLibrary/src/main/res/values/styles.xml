@@ -65,4 +65,10 @@
         <item name="android:layout_marginRight">@dimen/dp_23</item>
         <item name="android:layout_marginLeft">@dimen/dp_23</item>
     </style>
+    <style name="AppNoBarTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="android:windowTranslucentStatus" tools:targetApi="kitkat">true</item>
+        <item name="android:windowTranslucentNavigation" tools:targetApi="kitkat">true</item>
+        <item name="android:buttonStyle">@style/Widget.AppCompat.Button.Borderless</item>
+    </style>
 </resources>

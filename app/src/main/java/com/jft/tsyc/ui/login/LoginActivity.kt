@@ -36,7 +36,9 @@ class LoginActivity : BaseActivity(), LoginView.View {
     }
 
     fun initEvent() {
-        Util.etShowOrHine(et_login_psw, true)
+        iv_login_psw_right.setOnClickListener {
+            Util.etShowOrHine(et_login_psw,true)
+        }
         btn_login.setOnClickListener {
             submit()
         }
