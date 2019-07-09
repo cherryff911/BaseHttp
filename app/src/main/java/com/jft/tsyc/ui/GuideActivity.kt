@@ -29,6 +29,7 @@ class GuideActivity : BaseActivity() {
 
     override fun onInitCreateView(savedInstanceState: Bundle?) {
         if (isStartApp()) {
+            finish()
             mResultTo.toLoginAc()
             return
         }
@@ -39,8 +40,8 @@ class GuideActivity : BaseActivity() {
     fun initEvent() {
         tv_start_login.setOnClickListener {
             upDataIsStartAppMake()
+            finish()
             mResultTo.toLoginAc()
-            mResultTo.finishBase()
         }
     }
 

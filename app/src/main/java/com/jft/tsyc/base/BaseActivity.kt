@@ -1,6 +1,7 @@
 package com.jft.tsyc.base
 
 import android.os.Bundle
+import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import com.backpacker.UtilsLibrary.base.StartActivityManger
 import com.backpacker.UtilsLibrary.kotlin.AppManager
@@ -10,6 +11,7 @@ import com.backpacker.UtilsLibrary.kotlin.Util
 import com.backpacker.UtilsLibrary.net.HttpBaseResult
 import com.backpacker.UtilsLibrary.view.MyProgreeDialog
 import com.jft.tsyc.manage.ResultActivityTo
+import kotlinx.android.synthetic.main.gm_title_layout.*
 
 /**
  * @Author : YFL  is Creating a porject in tsyc
@@ -39,8 +41,8 @@ abstract class BaseActivity : AppCompatActivity() {
     private fun initTitle() {
         if (intent != null) {
             val title = intent.getStringExtra(StartActivityManger.CNT_PARAMETE_TITLE)
-            if (title != null) {
-                setTitle(title)
+            if (title != null && activityid != null) {
+                activityid.text = title
             }
         }
     }
@@ -81,4 +83,9 @@ abstract class BaseActivity : AppCompatActivity() {
     fun toShowToasct(content: String) {
         T.showToast(mContext, content)
     }
+
+    open fun onHomeBack(v: View) {
+        mResultTo.finishBase()
+    }
+
 }
