@@ -16,8 +16,16 @@ interface RequestNer {
     @POST("index.php/api/Login/index.html")
     fun login(
         @Field("username") username: String,
-        @Field("password") password: String,
-        @Field("client") client: String
+        @Field("password") password: String
+//        @Field("client") client: String
     )
             : Call<String>
+
+    @POST("api/Connect/sms_register.html")
+    fun register(
+        @Field("phone")phone:String,
+        @Field("captcha")captcha:String,
+        @Field("password")password:String,
+        @Field("invite")invite: String
+    ):Call<String>
 }

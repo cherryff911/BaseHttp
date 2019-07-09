@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import com.backpacker.UtilsLibrary.base.StartActivityManger
 import com.backpacker.UtilsLibrary.kotlin.AppManager
 import com.backpacker.UtilsLibrary.kotlin.PermissionUtils
+import com.backpacker.UtilsLibrary.kotlin.T
 import com.backpacker.UtilsLibrary.kotlin.Util
 import com.backpacker.UtilsLibrary.net.HttpBaseResult
 import com.backpacker.UtilsLibrary.view.MyProgreeDialog
@@ -75,5 +76,9 @@ abstract class BaseActivity : AppCompatActivity() {
 
     fun getStringWithId(id: Int): String {
         return mContext.resources.getString(id)
+    }
+
+    fun toShowToasct(content: String) {
+        T.showToast(mContext, content)
     }
 }

@@ -2,7 +2,9 @@ package com.backpacker.UtilsLibrary.net;
 
 import android.text.TextUtils;
 import android.util.Log;
+import com.alibaba.fastjson.JSON;
 import com.backpacker.UtilsLibrary.kotlin.LogUtil;
+import com.google.gson.Gson;
 import okhttp3.*;
 import okio.Buffer;
 import org.json.JSONObject;
@@ -57,10 +59,10 @@ public class CommonInterceptor implements Interceptor {
                 sbJson.append(line);
                 line = reader.readLine();
             } while (line != null);
-            Log.e("拦截数据===","response: " + sbJson.toString());
+            Log.i("拦截数据===", "respone="+JSON.parse(sbJson.toString()));
         } catch (Exception e) {
             e.printStackTrace();
-            Log.e("拦截数据===",e.getMessage(), e);
+            Log.i("拦截数据===", "respone="+JSON.parse(e.getMessage()), e);
         }
 //        saveCookies(response, request.url().toString());
         return response;
@@ -89,8 +91,21 @@ public class CommonInterceptor implements Interceptor {
         } else {
             newRequest = request;
         }
-        Log.e("拦截数据===","requestUrl: " + newRequest.url().toString());
+        hearParamers(newRequest);
         return newRequest;
+    }
+
+    private void hearParamers(Request newRequest) {
+        StringBuffer buffer = new StringBuffer();
+        RequestBody body = newRequest.body();
+        FormBody frombody = (FormBody) newRequest.body();
+        buffer.append(newRequest.url().toString() + "\n");
+        if (frombody.size() > 0) {
+            for (int i = 0; i < frombody.size(); i++) {
+                buffer.append("[" + frombody.encodedName(i) + "=" + frombody.encodedValue(i) + "]");
+            }
+        }
+        Log.i("请求数据==", buffer.toString());
     }
 
     /**
@@ -228,7 +243,7 @@ public class CommonInterceptor implements Interceptor {
                  * jsonObject.put("sign", sign);
                  */
                 newRequestBody = RequestBody.create(originalRequestBody.contentType(), jsonObject.toString());
-                Log.e("拦截数据===",getParamContent(newRequestBody));
+                Log.i("拦截数据===", getParamContent(newRequestBody));
 
             } catch (Exception e) {
                 newRequestBody = originalRequestBody;

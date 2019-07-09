@@ -4,14 +4,17 @@ import android.content.Context
 import com.backpacker.UtilsLibrary.kotlin.NetWork
 import com.backpacker.UtilsLibrary.kotlin.T
 import com.backpacker.UtilsLibrary.net.CommonInterceptor
+import com.backpacker.UtilsLibrary.net.GsonFactory.GsonDConverterFactory
 import com.google.gson.FieldNamingPolicy
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
 import com.jft.tsyc.base.DataMessageVo
+import com.jft.tsyc.netserver.NetServer
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
+import java.util.HashMap
 import java.util.concurrent.TimeUnit
 
 /**
@@ -20,11 +23,11 @@ import java.util.concurrent.TimeUnit
 object RetrofitFactory {
 
     //    val BASE_URL: String = "http://zzzh.natapp1.cc/"
-    val BASE_URL: String = DataMessageVo.mHttp
+    val BASE_URL: String = DataMessageVo.BASE_HTTP
 
     private val TIMEOUT: Long = 60
-    private var mainRetrofit: Request_Net? = null
-    private var mineRetrofit: Request_Net? = null
+    private var mainRetrofit: MainRequest? = null
+    private var mineRetrofit: MainRequest? = null
     val interceptor = CommonInterceptor()
     private val httpClient: OkHttpClient = OkHttpClient.Builder()
         .connectTimeout(TIMEOUT, TimeUnit.SECONDS)
@@ -39,24 +42,28 @@ object RetrofitFactory {
     }
 
     private fun createRetrofit(): Retrofit {
+        val map = HashMap<String, String>()
+        map["client"] = "android"
+        CommonInterceptor.setCommonParam(map)
         return Retrofit.Builder()
             .baseUrl(BASE_URL)
             .client(httpClient)
-            .addConverterFactory(GsonConverterFactory.create())
+//            .addConverterFactory(GsonConverterFactory.create())
+            .addConverterFactory(GsonDConverterFactory(buildGson()))
             .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
             .build()
     }
 
-    fun createMainRetrofit(): Request_Net {
+    fun createMainRetrofit(): MainRequest {
         if (mainRetrofit == null) {
-            mainRetrofit = createRetrofit().create(Request_Net::class.java)
+            mainRetrofit = createRetrofit().create(MainRequest::class.java)
         }
         return mainRetrofit!!
     }
 
-    fun createMineRetrofit(): Request_Net {
+    fun createMineRetrofit(): MainRequest {
         if (mineRetrofit == null) {
-            mineRetrofit = createRetrofit().create(Request_Net::class.java)
+            mineRetrofit = createRetrofit().create(MainRequest::class.java)
         }
         return mineRetrofit!!
     }

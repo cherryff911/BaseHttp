@@ -1,11 +1,8 @@
 package com.jft.tsyc.base
 
 import android.content.Context
-import com.backpacker.UtilsLibrary.kotlin.BaseEntity
-import com.backpacker.UtilsLibrary.kotlin.GsonUtil
 import com.backpacker.UtilsLibrary.kotlin.NetWork
-import com.backpacker.UtilsLibrary.net.ResultException
-import com.google.gson.reflect.TypeToken
+import com.backpacker.UtilsLibrary.net.GsonFactory.ResultException
 import io.reactivex.Observable
 import io.reactivex.ObservableEmitter
 import io.reactivex.ObservableOnSubscribe

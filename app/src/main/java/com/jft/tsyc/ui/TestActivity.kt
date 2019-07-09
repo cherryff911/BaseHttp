@@ -9,7 +9,7 @@ import com.backpacker.UtilsLibrary.kotlin.LogUtil
 import com.backpacker.UtilsLibrary.kotlin.PermissionUtils
 import com.backpacker.UtilsLibrary.kotlin.Util
 import com.jft.tsyc.base.BaseActivity
-import com.jft.tsyc.mvp.Contrat.MainView
+import com.jft.tsyc.mvp.Contract.MainContract
 import com.jft.tsyc.mvp.Model.MainModel
 import com.jft.tsyc.mvp.Presenter.MainPresenter
 import com.jft.tsyc.vo.Login
@@ -35,7 +35,7 @@ import java.io.File
  * @verdescript  版本号 修改时间  修改人 修改的概要说明
  * @Copyright: 2019/7/6
  */
-class TestActivity : BaseActivity(), MainView.View {
+class TestActivity : BaseActivity(), MainContract.View {
 
     override fun setInitContentView(): Int {
         return R.layout.activity_test

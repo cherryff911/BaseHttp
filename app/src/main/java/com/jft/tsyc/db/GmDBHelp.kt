@@ -26,7 +26,7 @@ class GmDBHelp(
     override fun onCreate(db: SQLiteDatabase?) {
         var carInfom = "create table " + TABLE_NAME + " (" +
                 "id integer primary key autoincrement," +
-                "token text," +
+                " text," +
                 "userId text," +
                 "phone text," +
                 "ifReal text," +//实名认证 1/已经2未

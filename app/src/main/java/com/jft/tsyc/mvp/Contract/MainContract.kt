@@ -1,4 +1,4 @@
-package com.jft.tsyc.mvp.Contrat
+package com.jft.tsyc.mvp.Contract
 
 import android.content.Context
 import com.jft.tsyc.mvp.ResultView.RequestResultInterface
@@ -10,7 +10,7 @@ import com.jft.tsyc.mvp.ResultView.RequestResultInterface
  * @Time :2019/7/4 16:08
  * @Purpose :主界面数据
  */
-interface MainView {
+interface MainContract {
     interface View {
         fun Success(t: Any?)
         fun Error(ex: Throwable)

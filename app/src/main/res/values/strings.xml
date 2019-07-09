@@ -1,14 +1,18 @@
 <resources>
-    <string name="app_name">tsyc</string>
-
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="skip">跳过</string>
-    <string name="please_input_phone">请输入你的手机号</string>
-    <string name="please_input_psw">请输入密码</string>
-    <string name="account_lift">还没有账号?</string>
-    <string name="account_right">忘记密码?</string>
-    <string name="login">登录</string>
-    <string name="weixin_login">微信快捷登录</string>
-    <string name="register">立即注册</string>
+    <string name="app_name" translatable="false">tsyc</string>
+    <string name="hello_blank_fragment" translatable="false">Hello blank fragment</string>
+    <string name="skip" translatable="false">跳过</string>
+    <string name="please_input_phone" translatable="false">请输入你的手机号</string>
+    <string name="please_input_psw" translatable="false">请输入密码</string>
+    <string name="account_lift" translatable="false">还没有账号?</string>
+    <string name="account_right" translatable="false">忘记密码?</string>
+    <string name="login" translatable="false">登录</string>
+    <string name="weixin_login" translatable="false">微信快捷登录</string>
+    <string name="register" translatable="false">立即注册</string>
+    <string name="start_name" translatable="false">天生有才</string>
+    <string name="play_get" translatable="false">点击获取</string>
+    <string name="register_read" translatable="false">我已阅读并同意</string>
+    <string name="register_agreement" translatable="false">《用户注册协议》</string>
+    <string name="please_input_code" translatable="false">请输入验证码</string>
+    <string name="please_input_invte" translatable="false">请输入邀请码</string>
 </resources>

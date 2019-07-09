@@ -27,11 +27,11 @@ class GsonResponseBodyConverter<T>(val gson:Gson, val type:Type): Converter<Resp
                 val code = jsonResult.optString("code")
 
                 when(code){
-                    "0000" -> {
+                    "200" -> {
                         return gson.fromJson(response, type)
                     }
                     else -> {
-                        throw ResultException(jsonResult.optString("msg"), code, jsonResult.optString("data")
+                        throw ResultException(jsonResult.optString("message"), code, jsonResult.optString("result")
                                 ?: "")
                     }
                 }

@@ -9,9 +9,9 @@ import com.jft.tsyc.base.BaseVo
  * @Time :2019/7/8 14:59
  * @Purpose :登录vo
  */
-data class LoginVo(var result: Result?=null) : BaseVo()
-data class Result(
+data class LoginVo(
     val key: String,
     val userid: Int,
     val username: String
 )
+

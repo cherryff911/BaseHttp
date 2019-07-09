@@ -1,7 +1,7 @@
 package com.jft.tsyc.mvp.Presenter
 
 import android.content.Context
-import com.jft.tsyc.mvp.Contrat.MainView
+import com.jft.tsyc.mvp.Contract.MainContract
 import com.jft.tsyc.mvp.ResultView.RequestResultInterface
 
 /**
@@ -11,10 +11,10 @@ import com.jft.tsyc.mvp.ResultView.RequestResultInterface
  * @Time :2019/7/4 16:06
  * @Purpose :主界面数据
  */
-class MainPresenter : MainView.Presenter{
-    var view: MainView.View? = null
-    var model: MainView.Model? = null
-    override fun initMvp(view: MainView.View, model: MainView.Model) {
+class MainPresenter : MainContract.Presenter{
+    var view: MainContract.View? = null
+    var model: MainContract.Model? = null
+    override fun initMvp(view: MainContract.View, model: MainContract.Model) {
         this.view = view
         this.model = model
     }

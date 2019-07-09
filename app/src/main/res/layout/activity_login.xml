@@ -46,12 +46,13 @@
                   android:layout_toLeftOf="@id/iv_login_phone_right"
                   android:layout_toRightOf="@id/iv_login_phone_life"
                   android:layout_height="match_parent"/>
-        <ImageView android:layout_width="wrap_content"
+        <ImageView android:layout_width="@dimen/dp_30"
                    android:layout_alignParentRight="true"
                    android:src="@mipmap/jft_but_ccose"
+                   android:scaleType="center"
                    android:layout_centerVertical="true"
                    android:id="@+id/iv_login_phone_right"
-                   android:layout_height="wrap_content"/>
+                   android:layout_height="match_parent"/>
     </RelativeLayout>
     <View style="@style/line_height_1"
           android:layout_marginRight="@dimen/dp_16"
@@ -78,12 +79,13 @@
                   android:layout_toLeftOf="@id/iv_login_psw_right"
                   android:layout_toRightOf="@id/iv_login_psw_life"
                   android:layout_height="match_parent"/>
-        <ImageView android:layout_width="wrap_content"
+        <ImageView android:layout_width="@dimen/dp_30"
                    android:layout_alignParentRight="true"
                    android:id="@+id/iv_login_psw_right"
                    android:layout_centerVertical="true"
+                   android:scaleType="center"
                    android:src="@mipmap/jft_but_openone_seyes"
-                   android:layout_height="wrap_content"/>
+                   android:layout_height="match_parent"/>
     </RelativeLayout>
     <View style="@style/line_height_1"
           android:layout_marginRight="@dimen/dp_16"
@@ -110,20 +112,20 @@
                   android:id="@+id/tv_login_no_psw"
                   android:layout_height="wrap_content"/>
     </LinearLayout>
-    <Button android:layout_width="match_parent"
+    <Button
             android:text="@string/login"
             android:id="@+id/btn_login"
             android:layout_marginLeft="@dimen/dp_23"
             android:layout_marginRight="@dimen/dp_23"
-            style="@style/text_17_white"
+            style="@style/btn_17_bule"
             android:layout_marginTop="@dimen/dp_54"
-            android:background="@drawable/gm_bule_circle_bg"
-            android:layout_height="@dimen/dp_48"/>
+           />
     <LinearLayout android:layout_width="match_parent"
                   android:background="@drawable/gm_white_circle_bg"
                   android:layout_marginTop="@dimen/dp_26"
                   android:orientation="horizontal"
                   android:gravity="center"
+                  android:id="@+id/ll_weixin_login"
                   android:layout_marginLeft="@dimen/dp_23"
                   android:layout_marginRight="@dimen/dp_23"
                   android:layout_height="@dimen/dp_48">

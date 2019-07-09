@@ -1,4 +1,4 @@
-package com.jft.tsyc.mvp.Contrat
+package com.jft.tsyc.mvp.Contract
 
 import android.content.Context
 import com.jft.tsyc.mvp.ResultView.RequestResultInterface
@@ -10,7 +10,7 @@ import com.jft.tsyc.mvp.ResultView.RequestResultInterface
  * @Time :2019/7/8 16:09
  * @Purpose :登录界面
  */
-interface LoginView {
+interface LoginContract {
     interface View {
         fun LoginSuccess(t: Any?)
         fun LoginError(ex: Throwable)

@@ -2,6 +2,7 @@ package com.backpacker.UtilsLibrary.net
 
 import android.content.Context
 import com.backpacker.UtilsLibrary.kotlin.T
+import com.backpacker.UtilsLibrary.net.GsonFactory.ResultException
 import java.io.IOException
 import java.net.ConnectException
 import java.net.SocketTimeoutException
@@ -38,7 +39,7 @@ object HttpBaseResult {
         } catch (e1: IOException) {
             e1.printStackTrace()
         } finally {
-
+            ex.printStackTrace()
         }
     }
     fun onComplate(){

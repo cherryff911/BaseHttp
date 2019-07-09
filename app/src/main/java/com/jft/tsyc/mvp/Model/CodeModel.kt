@@ -1,21 +1,21 @@
 package com.jft.tsyc.mvp.Model
 
 import android.content.Context
-import com.jft.tsyc.mvp.Contract.LoginContract
-import com.jft.tsyc.netserver.NetServer
+import com.jft.tsyc.mvp.Contract.CodeContract
 import com.jft.tsyc.mvp.ResultView.RequestResultInterface
 import com.jft.tsyc.mvp.ResultView.StringResultInterface
+import com.jft.tsyc.netserver.NetServer
 
 /**
  * @Author : YFL  is Creating a porject in tsyc
- * @Package com.example.tsyc.mvp.Model
+ * @Package com.jft.tsyc.mvp.Model
  * @Email : yufeilong92@163.com
- * @Time :2019/7/8 16:09
- * @Purpose :登录
+ * @Time :2019/7/9 10:58
+ * @Purpose :
  */
-class LoginModel : LoginContract.Model {
-    override fun submitLogin(context: Context, phone: String, psw: String, request: RequestResultInterface) {
-        val net = NetServer.Login(context, phone, psw, object : StringResultInterface {
+class CodeModel:CodeContract.Model {
+    override fun requestCode(context: Context, type: String, phone: String, request: RequestResultInterface) {
+        NetServer.requestCode(context, type, phone, respone = object : StringResultInterface {
             override fun onError(ex: Throwable) {
                 request.onError(ex)
             }
@@ -23,10 +23,10 @@ class LoginModel : LoginContract.Model {
             override fun onComplise() {
                 request.onComplise()
             }
+
             override fun <T> Success(t: T) {
                 request.Success(t)
             }
         })
     }
-
 }
