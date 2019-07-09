@@ -338,8 +338,8 @@ object UserDbHelp {
     private fun getContentValue(mDbQueryUtil: DbQueryUtil): UserDbVo {
         val vo: UserDbVo = UserDbVo()
         val id = mDbQueryUtil.queryInt("id")
-        val token = mDbQueryUtil.queryString("token")
         val userId = mDbQueryUtil.queryString("userId")
+        val token = mDbQueryUtil.queryString("token")
         val phone = mDbQueryUtil.queryString("phone")
         val ifReal = mDbQueryUtil.queryString("ifReal")
         val ifDriver = mDbQueryUtil.queryString("ifDriver")

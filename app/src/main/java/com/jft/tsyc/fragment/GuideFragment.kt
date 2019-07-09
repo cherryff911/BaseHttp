@@ -11,6 +11,8 @@ import com.backpacker.UtilsLibrary.kotlin.SetUtils
 
 import com.jft.tsyc.R
 import com.jft.tsyc.base.BaseFragment
+import com.jft.tsyc.db.UserDbHelp
+import com.jft.tsyc.ui.GuideActivity
 import kotlinx.android.synthetic.main.fragment_guide.*
 
 /**
@@ -65,8 +67,14 @@ class GuideFragment : BaseFragment() {
             "2" -> {
                 SetUtils.setImagerSrc(iv_guide_content, R.mipmap.timg)
                 iv_guide_content.setOnClickListener {
+
+                    if (mContext is GuideActivity) {
+                        (mContext as GuideActivity).upDataIsStartAppMake()
+                        (mContext as GuideActivity).finish()
+                    }
                     mResultTo.toLoginAc()
                 }
+
             }
         }
 

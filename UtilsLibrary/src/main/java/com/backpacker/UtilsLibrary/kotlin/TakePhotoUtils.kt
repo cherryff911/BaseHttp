@@ -49,7 +49,7 @@ object TakePhotoUtils {
 
             if (outputImage != null) {
 //                imageUri = Uri.fromFile(outputImage)
-                imageUri = FileProvider.getUriForFile(mActivity, "com.example.tsyc.FileProvider", outputImage)
+                imageUri = FileProvider.getUriForFile(mActivity, "com.jft.tsyc.FileProvider", outputImage)
                 takePictureIntent.putExtra(MediaStore.EXTRA_OUTPUT, imageUri)
                 mActivity.startActivityForResult(takePictureIntent, flag)
             }

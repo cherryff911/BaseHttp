@@ -102,6 +102,7 @@ class TestActivity : BaseActivity(), MainContract.View {
             CaptureActivity.REQ_CODE -> {
                 when (resultCode) {
                     RESULT_OK -> {
+                        if (data == null) return
                         Log.e("二维码扫描结果=", data!!.getStringExtra(CaptureActivity.EXTRA_SCAN_RESULT) + "");
                         Toast.makeText(
                             mContext,
@@ -110,9 +111,9 @@ class TestActivity : BaseActivity(), MainContract.View {
                         ).show()
                     }
                     RESULT_CANCELED -> {
+                        if (data == null) return
                         Toast.makeText(
-                            mContext,
-                            "请求失败${data!!.getStringExtra(CaptureActivity.EXTRA_SCAN_RESULT)}",
+                            mContext, "请求失败${data!!.getStringExtra(CaptureActivity.EXTRA_SCAN_RESULT)}",
                             Toast.LENGTH_SHORT
                         ).show()
                         Log.e("二维码扫描结果=", data!!.getStringExtra(CaptureActivity.EXTRA_SCAN_RESULT) + "");
@@ -188,7 +189,7 @@ class TestActivity : BaseActivity(), MainContract.View {
     }
 
     override fun Success(t: Any?) {
-       val data=t as Login
+        val data = t as Login
         LogUtil.e(data.toString())
     }
 

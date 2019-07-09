@@ -1,8 +1,6 @@
 package com.backpacker.UtilsLibrary.kotlin
 
-import android.content.Context
-import android.database.Cursor
-import java.lang.reflect.Array.getShort
+import com.tencent.wcdb.Cursor
 
 
 /**
@@ -41,10 +39,10 @@ class DbQueryUtil {
     }
 
     private fun QuesryException() {
-        if (mQuery == null) throw NullPointerException("mQuery 不能为空，请执行intCursor()")
+        if (mQuery == null) throw NullPointerException("mQuery 不能为空，请执行intCursor()") as Throwable
     }
 
-    fun queryString(key: String): String {
+    fun queryString(key: String): String? {
         QuesryException()
         val columnIndex = mQuery!!.getColumnIndex(key)
         return mQuery!!.getString(columnIndex)

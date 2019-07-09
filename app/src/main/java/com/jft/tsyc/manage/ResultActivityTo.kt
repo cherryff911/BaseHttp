@@ -4,6 +4,7 @@ import android.app.Activity
 import com.backpacker.UtilsLibrary.base.StartActivityManger
 import com.jft.tsyc.MainActivity
 import com.jft.tsyc.SelectImagerActivity
+import com.jft.tsyc.ui.login.LoginActivity
 import com.jft.tsyc.ui.login.RegisterActivity
 
 /**
@@ -22,7 +23,12 @@ open class ResultActivityTo(var context: Activity) : StartActivityManger(context
         jumpTo(RegisterActivity::class.java)
     }
 
-    fun toMainAc(){
+    fun toMainAc() {
         jumpTo(MainActivity::class.java)
+    }
+
+    fun toLoginAc() {
+        jumpTo(LoginActivity::class.java)
+
     }
 }

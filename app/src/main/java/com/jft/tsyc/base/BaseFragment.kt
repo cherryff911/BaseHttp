@@ -1,5 +1,6 @@
 package com.jft.tsyc.base
 
+import android.app.Activity
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -18,6 +19,7 @@ abstract class BaseFragment : Fragment() {
 
     abstract fun setContentView(): Int
     lateinit var mResultTo: ResultFragmentTo
+    lateinit var mContext:Activity
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -29,6 +31,7 @@ abstract class BaseFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         mResultTo = ResultFragmentTo(this.activity!!)
         setInitCreatedContentView(view, savedInstanceState)
+        mContext= this.activity!!
     }
 
 }

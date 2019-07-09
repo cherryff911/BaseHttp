@@ -6,6 +6,10 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:context=".ui.GuideActivity">
+
+    <androidx.viewpager.widget.ViewPager android:layout_width="match_parent"
+                                         android:id="@+id/viewpager_content"
+                                         android:layout_height="match_parent"/>
     <TextView android:layout_width="@dimen/dp_48"
               android:text="@string/skip"
               android:paddingLeft="@dimen/dp_10"
@@ -13,13 +17,10 @@
               android:paddingTop="@dimen/dp_4"
               android:textColor="@color/white"
               android:paddingBottom="@dimen/dp_4"
+              android:id="@+id/tv_start_login"
               android:background="@drawable/gm_gray_bg"
               android:layout_alignParentRight="true"
               android:layout_marginRight="@dimen/dp_16"
               android:layout_marginTop="@dimen/dp_40"
               android:layout_height="wrap_content"/>
-    <androidx.viewpager.widget.ViewPager android:layout_width="match_parent"
-                                         android:id="@+id/viewpager_content"
-                                         android:layout_height="match_parent"/>
-
 </RelativeLayout>
