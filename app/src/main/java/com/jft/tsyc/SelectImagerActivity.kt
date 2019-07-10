@@ -7,6 +7,7 @@ import kotlinx.android.synthetic.main.activity_select_imager.*
 
 class SelectImagerActivity : BaseSelectImageActivity() {
 
+
     override fun setInitContentView(): Int {
         return R.layout.activity_select_imager
     }
@@ -16,6 +17,9 @@ class SelectImagerActivity : BaseSelectImageActivity() {
         btn_select.setOnClickListener {
             toShowDialog()
         }
+    }
+
+    override fun onSelectImagePath(path: MutableList<String>) {
 
     }
 }

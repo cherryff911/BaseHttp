@@ -1,7 +1,12 @@
 package com.jft.tsyc.base
 
+import android.app.Activity
+import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
+import android.util.Log
+import com.backpacker.UtilsLibrary.java.UriToFile
+import com.backpacker.UtilsLibrary.kotlin.ImagerUtil
 import com.backpacker.UtilsLibrary.kotlin.PermissionUtils
 import com.backpacker.UtilsLibrary.kotlin.TakePhotoUtils
 import com.backpacker.UtilsLibrary.kotlin.Util
@@ -9,6 +14,9 @@ import com.backpacker.UtilsLibrary.view.SelectCammerDialog
 import com.jft.tsyc.base.BaseActivity
 import com.yanzhenjie.permission.Permission
 import me.nereo.multi_image_selector.MultiImageSelector
+import top.zibin.luban.Luban
+import top.zibin.luban.OnCompressListener
+import java.io.File
 import java.io.IOException
 
 /**
@@ -23,7 +31,8 @@ abstract class BaseSelectImageActivity : BaseActivity() {
     private val PHOTO_PIC_CODE = 1001// 拍照
     lateinit var selectImageDialog: SelectCammerDialog
     private var temp = 1
-    val imagePaths: ArrayList<String> = arrayListOf()
+    private var imagePaths: ArrayList<String> = arrayListOf()
+    private var mCompressPaths: ArrayList<String> = arrayListOf()
     override fun onInitCreateView(savedInstanceState: Bundle?) {
         selectImageDialog = object : SelectCammerDialog(mContext) {
             override fun onFromPhoto() {
@@ -78,5 +87,57 @@ abstract class BaseSelectImageActivity : BaseActivity() {
     fun toShowDialog(num: Int) {
         temp = num
         Util.showDialog(selectImageDialog)
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        when (requestCode) {
+            PHOTO_PIC_CODE -> {//拍照
+                if (resultCode == Activity.RESULT_OK) {
+                    if (takePhoneUri != null) {
+                        val filePath = UriToFile.getFilePathFromURI(mContext, takePhoneUri!!)
+                        imagePaths.add(filePath)
+                        lunBanCompress(imagePaths)
+                    }
+                }
+            }
+            REQUEST_IMAGE_BACK -> {//相册
+                if (data == null) return
+                imagePaths.clear()
+                val paths: MutableList<String> = data.getStringArrayListExtra(MultiImageSelector.EXTRA_RESULT)
+                imagePaths.addAll(paths)
+                lunBanCompress(imagePaths)
+            }
+        }
+
+    }
+
+    abstract fun onSelectImagePath(path: MutableList<String>)
+    fun lunBanCompress(path: MutableList<String>) {
+        mCompressPaths.clear()
+        var index = 0
+        Luban.with(mContext)
+            .load(path) // 传人要压缩的图片列表
+            .ignoreBy(100)// 忽略不压缩图片的大小
+            .setTargetDir(ImagerUtil.getDefaultPath(mContext))
+            .setCompressListener(object : OnCompressListener {
+                override fun onSuccess(file: File?) {
+                    ++index
+                    mCompressPaths.add(file!!.toString())
+                    if (index == path.size) {
+                        onSelectImagePath(mCompressPaths)
+                    }
+                    Log.i("鲁班压缩===", "压缩成功")
+                }
+
+                override fun onError(e: Throwable?) {
+                    this.onError(e)
+                    Log.i("鲁班压缩===", "压缩异常")
+                }
+
+                override fun onStart() {
+                    Log.i("鲁班压缩===", "开始压缩")
+                }
+            }).launch()
     }
 }
