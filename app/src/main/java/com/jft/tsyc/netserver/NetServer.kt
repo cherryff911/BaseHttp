@@ -51,16 +51,14 @@ object NetServer : BaseHttp() {
         phone: String,
         code: String,
         psw: String,
-        invrteCode: String,
         respone: StringResultInterface
     ) {
 
         if (RetrofitFactory.judgmentNetWork(mContext)) {
-            RetrofitFactory.createMainRetrofit().register(
+            RetrofitFactory.createMainRetrofit().submitForgetPsw(
                 phone = phone,
                 password = psw,
                 captcha = code
-                , invite = invrteCode
             )
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
@@ -82,21 +80,44 @@ object NetServer : BaseHttp() {
 
         if (RetrofitFactory.judgmentNetWork(mContext)) {
 
-        RetrofitFactory.createMainRetrofit().reqeustCode(
-            type = type,
-            phone = phone
-        )
-            .subscribeOn(Schedulers.io())
-            .observeOn(AndroidSchedulers.mainThread())
-            .subscribe(RxJaveObserver({
-                respone.Success(it.data)
-            }, {
-                respone.onError(it)
-            }, {
-                respone.onComplise()
-            }))
+            RetrofitFactory.createMainRetrofit().reqeustCode(
+                type = type,
+                phone = phone
+            )
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(RxJaveObserver({
+                    respone.Success(it.data)
+                }, {
+                    respone.onError(it)
+                }, {
+                    respone.onComplise()
+                }))
         }
 
+    }
+
+    /**
+     * 忘记密码
+     */
+    fun submitForgetPsw(mContext: Context, phone: String, code: String, psw: String, respone: StringResultInterface) {
+        if (RetrofitFactory.judgmentNetWork(mContext)) {
+            RetrofitFactory.createMainRetrofit().submitForgetPsw(
+                phone = phone,
+                captcha = code,
+                password = psw
+            ).observeOn(AndroidSchedulers.mainThread())
+                .subscribeOn(Schedulers.io())
+                .subscribe(RxJaveObserver(
+                    success = {
+                        respone.Success(it.data)
+                    }, error = {
+                        respone.onError(it)
+                    }, complate = {
+                        respone.onComplise()
+                    })
+                )
+        }
     }
 
 }

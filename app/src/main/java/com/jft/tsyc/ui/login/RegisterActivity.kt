@@ -97,7 +97,7 @@ class RegisterActivity : BaseActivity(), RegisterContract.View, CodeContract.Vie
 
     override fun CodeSuccess(t: Any?) {
         CountdownUtil.getInstance().startTime(mContext, btn_register_right)
-        toShowToasct("验证码发送成功")
+        toShowToasct(getString(R.string.code_send_success))
     }
 
     override fun CodeError(ex: Throwable) {

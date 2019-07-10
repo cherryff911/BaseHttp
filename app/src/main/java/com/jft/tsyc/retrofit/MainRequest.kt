@@ -41,5 +41,12 @@ interface MainRequest {
         @Field("phone") phone: String
     ): Observable<BaseEntity<CodeVo>>
 
+    @FormUrlEncoded
+    @POST("api/Connect/find_password")
+    fun submitForgetPsw(
+        @Field("phone") phone: String,
+        @Field("captcha") captcha: String,
+        @Field("password") password: String
+    ): Observable<BaseEntity<String>>
 
 }

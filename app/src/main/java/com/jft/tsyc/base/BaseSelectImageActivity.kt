@@ -131,7 +131,7 @@ abstract class BaseSelectImageActivity : BaseActivity() {
                 }
 
                 override fun onError(e: Throwable?) {
-                    this.onError(e)
+                    mContext.onError(e!!)
                     Log.i("鲁班压缩===", "压缩异常")
                 }
 

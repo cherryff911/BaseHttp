@@ -15,4 +15,11 @@
     <string name="register_agreement" translatable="false">《用户注册协议》</string>
     <string name="please_input_code" translatable="false">请输入验证码</string>
     <string name="please_input_invte" translatable="false">请输入邀请码</string>
+    <string name="please_input_phone_code" translatable="false">请输入手机短信验证码</string>
+    <string name="please_input_new_psw" translatable="false">请输入您的新密码</string>
+    <string name="please_input_new_sure_psw" translatable="false">再次输入您新密码</string>
+    <string name="sure" translatable="false">确定</string>
+    <string name="code_send_success" translatable="false">验证码发送成功</string>
+    <string name="please_psw_no">两次输入密码不一致,请重新输入</string>
+    <string name="psw_changer_success">修改密码成功</string>
 </resources>
