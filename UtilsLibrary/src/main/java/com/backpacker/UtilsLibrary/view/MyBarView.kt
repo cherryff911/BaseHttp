@@ -5,6 +5,7 @@ import android.content.res.TypedArray
 import android.graphics.Color
 import android.util.AttributeSet
 import android.view.View
+import com.backpacker.UtilsLibrary.kotlin.Constant
 import com.example.UtilsLibrary.R
 
 
@@ -21,8 +22,8 @@ class MyBarView:View{
     override fun onMeasure(widthMeasureSpec: Int, heightMeasureSpec: Int) {
         super.onMeasure(widthMeasureSpec, heightMeasureSpec)
         setMeasuredDimension(
-            0,
-            0
+            Constant.screenHeight,
+            Constant.screenWidth
         )
     }
 

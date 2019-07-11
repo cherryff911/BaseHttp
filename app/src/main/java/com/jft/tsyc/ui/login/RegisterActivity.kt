@@ -8,6 +8,7 @@ import com.backpacker.UtilsLibrary.kotlin.Util
 import com.jft.tsyc.R
 import com.jft.tsyc.base.BaseActivity
 import com.jft.tsyc.base.DataMessageVo
+import com.jft.tsyc.db.UserDbHelp
 import com.jft.tsyc.mvp.Contract.CodeContract
 import com.jft.tsyc.mvp.Contract.RegisterContract
 import com.jft.tsyc.mvp.Model.CodeModel
@@ -85,8 +86,9 @@ class RegisterActivity : BaseActivity(), RegisterContract.View, CodeContract.Vie
     }
 
     override fun RegisterSuccess(t: Any?) {
-        val data=t as RegisterVo
-
+        val data = t as RegisterVo
+        DataMessageVo.UserInfom = data
+        UserDbHelp.addUseInfomData(data.key, data.username, data.state)
         mResultTo.toMainAc()
     }
 

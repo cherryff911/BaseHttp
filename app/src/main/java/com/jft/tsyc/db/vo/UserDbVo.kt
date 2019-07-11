@@ -1,4 +1,4 @@
-package com.jft.tsyc.base.db.vo
+package com.jft.tsyc.db.vo
 
 class UserDbVo(
     var id: Int = 0,

@@ -1,17 +1,11 @@
-package com.jft.tsyc.db.fragment
+package com.jft.tsyc.fragment
 
-import android.content.Context
-import android.net.Uri
 import android.os.Bundle
-import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 import com.backpacker.UtilsLibrary.kotlin.SetUtils
 
 import com.jft.tsyc.R
 import com.jft.tsyc.base.BaseFragment
-import com.jft.tsyc.db.UserDbHelp
 import com.jft.tsyc.ui.GuideActivity
 import kotlinx.android.synthetic.main.fragment_guide.*
 

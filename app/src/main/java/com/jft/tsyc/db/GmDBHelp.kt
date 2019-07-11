@@ -1,4 +1,4 @@
-package com.jft.tsyc.base.db
+package com.jft.tsyc.db
 
 import android.content.Context
 import com.jft.tsyc.base.DataMessageVo
@@ -15,8 +15,8 @@ class GmDBHelp(
         val DEFAULT_NAME: String = "skmd.db"
         val TABLE_NAME: String = "carinfom"
         var DEFAULT_VERSION: Int = 1;
-        private var singletonInstance:GmDBHelp ?= null
-        @Synchronized fun getInstance(m:Context):GmDBHelp?{
+        private var singletonInstance: GmDBHelp?= null
+        @Synchronized fun getInstance(m:Context): GmDBHelp?{
             if (singletonInstance == null){
                 singletonInstance = GmDBHelp(m)
             }

@@ -2,14 +2,11 @@ package com.jft.tsyc.ui
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
-import com.backpacker.UtilsLibrary.kotlin.PermissionUtils
 import com.jft.tsyc.base.BaseActivity
 import com.jft.tsyc.R
-import com.jft.tsyc.base.adapter.GuideAdapter
+import com.jft.tsyc.adapter.GuideAdapter
 import com.jft.tsyc.db.UserDbHelp
-import com.jft.tsyc.db.UserDbHelp.mContext
-import com.jft.tsyc.db.fragment.GuideFragment
-import com.yanzhenjie.permission.Permission
+import com.jft.tsyc.fragment.GuideFragment
 import kotlinx.android.synthetic.main.activity_guide.*
 
 /**

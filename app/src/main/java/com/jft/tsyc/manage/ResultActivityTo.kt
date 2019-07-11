@@ -4,6 +4,7 @@ import android.app.Activity
 import com.backpacker.UtilsLibrary.base.StartActivityManger
 import com.jft.tsyc.MainActivity
 import com.jft.tsyc.SelectImagerActivity
+import com.jft.tsyc.ui.login.ForgetActivity
 import com.jft.tsyc.ui.login.LoginActivity
 import com.jft.tsyc.ui.login.RegisterActivity
 
@@ -29,6 +30,11 @@ open class ResultActivityTo(var context: Activity) : StartActivityManger(context
 
     fun toLoginAc() {
         jumpTo(LoginActivity::class.java)
+
+    }
+
+    fun toForgetAc(title:String) {
+        jumpTo(ForgetActivity::class.java,title)
 
     }
 }

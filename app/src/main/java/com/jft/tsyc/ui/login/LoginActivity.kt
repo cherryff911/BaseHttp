@@ -55,7 +55,7 @@ class LoginActivity : BaseActivity(), LoginContract.View {
         }
         //忘记密码
         tv_login_no_psw.setOnClickListener {
-
+          mResultTo.toForgetAc(getStringWithId(R.string.account_right))
         }
         //微信登录
         ll_weixin_login.setOnClickListener {

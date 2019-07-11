@@ -1,4 +1,4 @@
-package com.jft.tsyc.base.adapter
+package com.jft.tsyc.adapter
 
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
