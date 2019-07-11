@@ -8,6 +8,7 @@ import com.backpacker.UtilsLibrary.kotlin.DbQueryUtil
 import com.backpacker.UtilsLibrary.kotlin.StringUtil
 import com.jft.tsyc.base.db.GmDBHelp
 import com.jft.tsyc.base.db.vo.UserDbVo
+import com.jft.tsyc.db.vo.DbKey
 import com.tencent.wcdb.database.SQLiteDatabase
 import java.lang.Exception
 
@@ -49,6 +50,7 @@ object UserDbHelp {
         return userHelp!!.writableDatabase
     }
 
+
     //保存用户信息
     fun addUseInfom(
             id: String?, token: String?, phone: String?,
@@ -61,18 +63,18 @@ object UserDbHelp {
         mSqLiteDatabase!!.beginTransaction()
         try {
             val conVal = ContentValues()
-            conVal.put("userId", id)
-            conVal.put("token", token)
-            conVal.put("phone", phone)
-            conVal.put("ifReal", ifReal)
-            conVal.put("ifDriver", ifDriver)
-            conVal.put("ifcar", ifcar)
-            conVal.put("name", name)
-            conVal.put("idnumber", number)
-            conVal.put("hear", hear)
-            conVal.put("plateNumber", plateNumber)
-            conVal.put("role", role)
-            conVal.put("carPlateColourId", carPlateColourId)
+            conVal.put(DbKey.userId, id)
+            conVal.put(DbKey.key, token)
+            conVal.put(DbKey.phone, phone)
+            conVal.put(DbKey.state, ifReal)
+            conVal.put(DbKey.ifDriver, ifDriver)
+            conVal.put(DbKey.ifCar, ifcar)
+            conVal.put(DbKey.name, name)
+            conVal.put(DbKey.idnumber, number)
+            conVal.put(DbKey.hear, hear)
+            conVal.put(DbKey.plateNumber, plateNumber)
+            conVal.put(DbKey.role, role)
+            conVal.put(DbKey.carPlateColourId, carPlateColourId)
             mSqLiteDatabase!!.insert(GmDBHelp.TABLE_NAME, null, conVal)
             mSqLiteDatabase!!.setTransactionSuccessful()
         } catch (e: Exception) {
@@ -89,14 +91,14 @@ object UserDbHelp {
     fun upHearInfom(hear: String?){
         isRead()
         val userInfom = getUserInfom()
-        if (userInfom==null||StringUtil.isEmpty(userInfom.token)){
+        if (userInfom==null||StringUtil.isEmpty(userInfom.key)){
             return
         }
         mSqLiteDatabase!!.beginTransaction()
         try {
             val conVal = ContentValues()
-            conVal.put("hear", hear)
-            mSqLiteDatabase!!.update(GmDBHelp.TABLE_NAME, conVal, "userId=?",
+            conVal.put(DbKey.hear, hear)
+            mSqLiteDatabase!!.update(GmDBHelp.TABLE_NAME, conVal, "${DbKey.userId}=?",
                     arrayOf(userInfom.userId))
             mSqLiteDatabase!!.setTransactionSuccessful()
         } catch (e: Exception) {
@@ -114,25 +116,25 @@ object UserDbHelp {
     ) {
         isRead()
         val userInfom = getUserInfom()
-        if (userInfom == null || StringUtil.isEmpty(userInfom.token)) {
+        if (userInfom == null || StringUtil.isEmpty(userInfom.key)) {
             return
         }
         mSqLiteDatabase!!.beginTransaction()
         try {
             val conVal = ContentValues()
-            conVal.put("userId", id)
-            conVal.put("phone", phone)
-            conVal.put("ifReal", ifReal)
-            conVal.put("ifDriver", ifDriver)
-            conVal.put("ifcar", ifcar)
-            conVal.put("name", name)
-            conVal.put("idnumber", number)
-            conVal.put("hear", hear)
-            conVal.put("plateNumber", plateNumber)
-            conVal.put("role", role)
-            conVal.put("extend", ifVert)
-            conVal.put("carPlateColourId", carPlateColourId)
-            mSqLiteDatabase!!.update(GmDBHelp.TABLE_NAME, conVal, "userId=?",
+            conVal.put(DbKey.userId, id)
+            conVal.put(DbKey.phone, phone)
+            conVal.put(DbKey.state, ifReal)
+            conVal.put(DbKey.ifDriver, ifDriver)
+            conVal.put(DbKey.ifCar, ifcar)
+            conVal.put(DbKey.name, name)
+            conVal.put(DbKey.idnumber, number)
+            conVal.put(DbKey.hear, hear)
+            conVal.put(DbKey.plateNumber, plateNumber)
+            conVal.put(DbKey.role, role)
+            conVal.put(DbKey.extend, ifVert)
+            conVal.put(DbKey.carPlateColourId, carPlateColourId)
+            mSqLiteDatabase!!.update(GmDBHelp.TABLE_NAME, conVal, "${DbKey.userId}=?",
                     arrayOf(userInfom.userId))
             mSqLiteDatabase!!.setTransactionSuccessful()
         } catch (e: Exception) {
@@ -147,19 +149,19 @@ object UserDbHelp {
     fun upReal(str: String, name: String?, phone: String?, number: String?, portrait: String?) {
         isRead()
         val userInfom = getUserInfom()
-        if (userInfom == null || StringUtil.isEmpty(userInfom.token)) {
+        if (userInfom == null || StringUtil.isEmpty(userInfom.key)) {
             return
         }
         mSqLiteDatabase!!.beginTransaction()
         try {
             val contvalue = ContentValues()
-            contvalue.put("ifReal", str)
-            contvalue.put("name", name)
-            contvalue.put("phone", phone)
-            contvalue.put("idnumber", number)
-            contvalue.put("hear", portrait)
+            contvalue.put(DbKey.state, str)
+            contvalue.put(DbKey.name, name)
+            contvalue.put(DbKey.phone, phone)
+            contvalue.put(DbKey.idnumber, number)
+            contvalue.put(DbKey.hear, portrait)
             mSqLiteDatabase!!.update(
-                    GmDBHelp.TABLE_NAME, contvalue, "userId=?"
+                    GmDBHelp.TABLE_NAME, contvalue, "${DbKey.userId}=?"
                     , arrayOf(userInfom.userId)
             )
             mSqLiteDatabase!!.setTransactionSuccessful()
@@ -181,16 +183,16 @@ object UserDbHelp {
     fun upDriver(str: String, role: String) {
         isRead()
         val userInfom = getUserInfom()
-        if (userInfom == null || StringUtil.isEmpty(userInfom.token)) {
+        if (userInfom == null || StringUtil.isEmpty(userInfom.key)) {
             return
         }
         mSqLiteDatabase!!.beginTransaction()
         try {
             val contvalue = ContentValues()
-            contvalue.put("ifDriver", str)
-            contvalue.put("role", role)
+            contvalue.put(DbKey.ifDriver, str)
+            contvalue.put(DbKey.role, role)
             mSqLiteDatabase!!.update(
-                    GmDBHelp.TABLE_NAME, contvalue, "userId=?"
+                    GmDBHelp.TABLE_NAME, contvalue, "${DbKey.userId}=?"
                     , arrayOf(userInfom.userId)
             )
             mSqLiteDatabase!!.setTransactionSuccessful()
@@ -207,17 +209,17 @@ object UserDbHelp {
     fun upCar(str: String, plateNumber: String, carPlateColourId: String) {
         isRead()
         val userInfom = getUserInfom()
-        if (userInfom == null || StringUtil.isEmpty(userInfom.token)) {
+        if (userInfom == null || StringUtil.isEmpty(userInfom.key)) {
             return
         }
         mSqLiteDatabase!!.beginTransaction()
         try {
             val contvalue = ContentValues()
-            contvalue.put("ifCar", str)
-            contvalue.put("plateNumber", plateNumber)
-            contvalue.put("carPlateColourId", carPlateColourId)
+            contvalue.put(DbKey.ifCar, str)
+            contvalue.put(DbKey.plateNumber, plateNumber)
+            contvalue.put(DbKey.carPlateColourId, carPlateColourId)
             mSqLiteDatabase!!.update(
-                    GmDBHelp.TABLE_NAME, contvalue, "userId=?"
+                    GmDBHelp.TABLE_NAME, contvalue, "${DbKey.userId}=?"
                     , arrayOf(userInfom.userId)
             )
             mSqLiteDatabase!!.setTransactionSuccessful()
@@ -258,12 +260,12 @@ object UserDbHelp {
     fun upDateGuiderStatus(look: String) {
         isRead()
         val content = ContentValues()
-        content.put("guider", look)
+        content.put(DbKey.guider, look)
         val userInfom = getUserInfom()
         if (userInfom == null || StringUtil.isEmpty(userInfom.userId))
             mSqLiteDatabase!!.insert(GmDBHelp.TABLE_NAME, null, content)
         else {
-            mSqLiteDatabase!!.update(GmDBHelp.TABLE_NAME, content, "userId=?",
+            mSqLiteDatabase!!.update(GmDBHelp.TABLE_NAME, content, "${DbKey.userId}=?",
                     arrayOf(userInfom.userId))
         }
     }
@@ -276,60 +278,60 @@ object UserDbHelp {
 
     private fun copyVo(old: UserDbVo, new: UserDbVo): ContentValues {
         val values: ContentValues = ContentValues()
-        if (StringUtil.isEmpty(new.token)) {
-            values.put("token", old.token)
+        if (StringUtil.isEmpty(new.key)) {
+            values.put(DbKey.key, old.key)
         } else {
-            values.put("token", new.token)
+            values.put(DbKey.key, new.key)
         }
         if (StringUtil.isEmpty(new.userId)) {
-            values.put("userId", old.userId)
+            values.put(DbKey.userId, old.userId)
         } else {
-            values.put("userId", new.userId)
+            values.put(DbKey.userId, new.userId)
         }
         if (StringUtil.isEmpty(new.phone)) {
-            values.put("phone", old.phone)
+            values.put(DbKey.phone, old.phone)
         } else {
-            values.put("phone", new.phone)
+            values.put(DbKey.phone, new.phone)
         }
-        if (StringUtil.isEmpty(new.ifReal)) {
-            values.put("ifReal", old.ifReal)
+        if (StringUtil.isEmpty(new.state)) {
+            values.put(DbKey.state, old.state)
         } else {
-            values.put("ifReal", new.ifReal)
+            values.put(DbKey.state, new.state)
         }
         if (StringUtil.isEmpty(new.ifDriver)) {
-            values.put("ifDriver", old.ifDriver)
+            values.put(DbKey.ifDriver, old.ifDriver)
         } else {
-            values.put("ifDriver", new.ifDriver)
+            values.put(DbKey.ifDriver, new.ifDriver)
         }
         if (StringUtil.isEmpty(new.ifCar)) {
-            values.put("ifCar", old.ifCar)
+            values.put(DbKey.ifCar, old.ifCar)
         } else {
-            values.put("ifCar", new.token)
+            values.put(DbKey.ifCar, new.ifCar)
         }
         if (StringUtil.isEmpty(new.extend)) {
-            values.put("extend", old.extend)
+            values.put(DbKey.extend, old.extend)
         } else {
-            values.put("extend", new.extend)
+            values.put(DbKey.extend, new.extend)
         }
         if (StringUtil.isEmpty(new.extend_one)) {
-            values.put("extend_one", old.extend_one)
+            values.put(DbKey.extend_one, old.extend_one)
         } else {
-            values.put("extend_one", new.extend_one)
+            values.put(DbKey.extend_one, new.extend_one)
         }
         if (StringUtil.isEmpty(new.extend_two)) {
-            values.put("extend_two", old.extend_two)
+            values.put(DbKey.extend_two, old.extend_two)
         } else {
-            values.put("extend_two", new.extend_two)
+            values.put(DbKey.extend_two, new.extend_two)
         }
         if (StringUtil.isEmpty(new.extend_three)) {
-            values.put("extend_three", old.extend_three)
+            values.put(DbKey.extend_three, old.extend_three)
         } else {
-            values.put("extend_three", new.extend_three)
+            values.put(DbKey.extend_three, new.extend_three)
         }
         if (StringUtil.isEmpty(new.extend_four)) {
-            values.put("extend_four", old.extend_four)
+            values.put(DbKey.extend_four, old.extend_four)
         } else {
-            values.put("extend_four", new.extend_four)
+            values.put(DbKey.extend_four, new.extend_four)
         }
         return values;
 
@@ -337,34 +339,34 @@ object UserDbHelp {
 
     private fun getContentValue(mDbQueryUtil: DbQueryUtil): UserDbVo {
         val vo: UserDbVo = UserDbVo()
-        val id = mDbQueryUtil.queryInt("id")
-        val userId = mDbQueryUtil.queryString("userId")
-        val token = mDbQueryUtil.queryString("token")
-        val phone = mDbQueryUtil.queryString("phone")
-        val ifReal = mDbQueryUtil.queryString("ifReal")
-        val ifDriver = mDbQueryUtil.queryString("ifDriver")
-        val ifCar = mDbQueryUtil.queryString("ifCar")
-        val name = mDbQueryUtil.queryString("name")
-        val idnumber = mDbQueryUtil.queryString("idnumber")
-        val hear = mDbQueryUtil.queryString("hear")
-        val plateNumber = mDbQueryUtil.queryString("plateNumber")
-        val role = mDbQueryUtil.queryString("role")
-        val extend = mDbQueryUtil.queryString("extend")
-        val extent_one = mDbQueryUtil.queryString("extend_one")
-        val extend_two = mDbQueryUtil.queryString("extend_two")
-        val extend_three = mDbQueryUtil.queryString("extend_three")
-        val extend_four = mDbQueryUtil.queryString("extend_four")
-        val guider = mDbQueryUtil.queryString("guider")
-        val carPlateColourId = mDbQueryUtil.queryString("carPlateColourId")
+        val id = mDbQueryUtil.queryInt(DbKey.id)
+        val userId = mDbQueryUtil.queryString(DbKey.userId)
+        val token = mDbQueryUtil.queryString(DbKey.key)
+        val phone = mDbQueryUtil.queryString(DbKey.phone)
+        val ifReal = mDbQueryUtil.queryString(DbKey.state)
+        val ifDriver = mDbQueryUtil.queryString(DbKey.ifDriver)
+        val ifCar = mDbQueryUtil.queryString(DbKey.ifCar)
+        val name = mDbQueryUtil.queryString(DbKey.name)
+        val idnumber = mDbQueryUtil.queryString(DbKey.idnumber)
+        val hear = mDbQueryUtil.queryString(DbKey.hear)
+        val plateNumber = mDbQueryUtil.queryString(DbKey.plateNumber)
+        val role = mDbQueryUtil.queryString(DbKey.role)
+        val extend = mDbQueryUtil.queryString(DbKey.extend)
+        val extent_one = mDbQueryUtil.queryString(DbKey.extend_one)
+        val extend_two = mDbQueryUtil.queryString(DbKey.extend_two)
+        val extend_three = mDbQueryUtil.queryString(DbKey.extend_three)
+        val extend_four = mDbQueryUtil.queryString(DbKey.extend_four)
+        val guider = mDbQueryUtil.queryString(DbKey.guider)
+        val carPlateColourId = mDbQueryUtil.queryString(DbKey.carPlateColourId)
         vo.id = id ?: 0
         vo.guider = guider ?: "0"
         vo.carPlateColourId = carPlateColourId ?: "0"
-        vo.token = token ?: ""
+        vo.key = token ?: ""
         vo.userId = userId ?: ""
         vo.phone = phone ?: ""
         vo.ifCar = ifCar ?: ""
         vo.ifDriver = ifDriver ?: ""
-        vo.ifReal = ifReal ?: ""
+        vo.state = ifReal ?: ""
         vo.extend = extend ?: ""
         vo.extend_one = extent_one ?: ""
         vo.extend_two = extend_two ?: ""

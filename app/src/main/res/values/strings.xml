@@ -22,4 +22,7 @@
     <string name="code_send_success" translatable="false">验证码发送成功</string>
     <string name="please_psw_no">两次输入密码不一致,请重新输入</string>
     <string name="psw_changer_success">修改密码成功</string>
+    <string name="bind_phone">绑定您的手机号</string>
+    <string name="please_set_psw">请设置您的密码</string>
+    <string name="sure_bind">确认绑定</string>
 </resources>

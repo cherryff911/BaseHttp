@@ -12,7 +12,6 @@
             android:layout_height="@dimen/dp_48"
     >
 
-
         <ImageView android:layout_width="@dimen/dp_48"
                    android:id="@+id/iv_gm_back"
                    android:scaleType="center"

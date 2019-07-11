@@ -22,7 +22,7 @@ class ForgetModel : ForgetContract.Model {
         request: RequestResultInterface
     ) {
 
-        NetServer.submiteRegister(context, phone, code, psw, object : StringResultInterface {
+        NetServer.submitForgetPsw(context, phone, code, psw, object : StringResultInterface {
             override fun onError(ex: Throwable) {
                 request.onError(ex)
             }

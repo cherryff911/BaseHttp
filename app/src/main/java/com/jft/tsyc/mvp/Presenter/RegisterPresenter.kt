@@ -21,6 +21,10 @@ class RegisterPresenter : RegisterContract.Presenter {
         this.model = model
     }
 
+    /***
+     * @param code 验证码
+     * @param inviteCode 邀请码
+     */
     override fun submitRegister(context: Context, phone: String, code: String, psw: String, inviteCode: String) {
         model!!.submitRegister(context, phone, code, psw, inviteCode, object : RequestResultInterface {
             override fun onError(ex: Throwable) {

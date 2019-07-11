@@ -59,9 +59,8 @@
                        android:id="@+id/iv_register_phone_right"
                        android:layout_height="match_parent"/>
         </RelativeLayout>
-        <View style="@style/line_height_1"
-              android:layout_marginRight="@dimen/dp_30"
-              android:layout_marginLeft="@dimen/dp_30"
+        <View style="@style/line_height_1_margin_30"
+
         />
         <RelativeLayout android:layout_width="match_parent"
                         style="@style/margin_38"
@@ -100,9 +99,8 @@
                     style="@style/text_14_bule"
                     android:layout_height="match_parent"/>
         </RelativeLayout>
-        <View style="@style/line_height_1"
-              android:layout_marginRight="@dimen/dp_30"
-              android:layout_marginLeft="@dimen/dp_30"
+        <View style="@style/line_height_1_margin_30"
+
         />
         <RelativeLayout android:layout_width="match_parent"
                         style="@style/margin_38"
@@ -124,9 +122,8 @@
                       android:layout_toRightOf="@id/iv_register_psw_life"
                       android:layout_height="match_parent"/>
         </RelativeLayout>
-        <View style="@style/line_height_1"
-              android:layout_marginRight="@dimen/dp_30"
-              android:layout_marginLeft="@dimen/dp_30"
+        <View style="@style/line_height_1_margin_30"
+
         />
         <RelativeLayout android:layout_width="match_parent"
                         style="@style/margin_38"
@@ -148,9 +145,8 @@
                       android:layout_toRightOf="@id/iv_register_invite_life"
                       android:layout_height="match_parent"/>
         </RelativeLayout>
-        <View style="@style/line_height_1"
-              android:layout_marginRight="@dimen/dp_30"
-              android:layout_marginLeft="@dimen/dp_30"
+        <View style="@style/line_height_1_margin_30"
+
         />
         <RelativeLayout android:layout_width="match_parent"
                         style="@style/margin_30"
@@ -187,8 +183,7 @@
                 android:text="注册"
                 android:id="@+id/btn_register_reigster"
                 android:layout_marginTop="@dimen/dp_54"
-                android:layout_marginRight="@dimen/dp_30"
-                android:layout_marginLeft="@dimen/dp_30"
+
         />
     </LinearLayout>
 </ScrollView>

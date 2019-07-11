@@ -15,7 +15,10 @@ import com.jft.tsyc.netserver.NetServer
  */
 class RegisterModel : RegisterContract.Model {
 
-
+    /***
+     * @param code 验证码
+     * @param inviteCode 邀请码
+     */
     override fun submitRegister(
         context: Context,
         phone: String,

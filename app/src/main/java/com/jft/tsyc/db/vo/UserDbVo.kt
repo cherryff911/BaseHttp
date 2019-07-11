@@ -2,10 +2,10 @@ package com.jft.tsyc.base.db.vo
 
 class UserDbVo(
     var id: Int = 0,
-    var token: String = "",//用户token
+    var key: String = "",//用户token
     var userId: String = "",//用户id
     var phone: String = "",//手机号码
-    var ifReal: String = "",//是否实名认证
+    var state: String = "",//是否实名认证
     var ifDriver: String = "",//是否驾驶员认证
     var ifCar: String = "",//是否车辆认证
     var name: String = "",//姓名

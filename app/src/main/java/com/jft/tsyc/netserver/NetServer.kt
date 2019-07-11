@@ -51,14 +51,16 @@ object NetServer : BaseHttp() {
         phone: String,
         code: String,
         psw: String,
+        invite:String,
         respone: StringResultInterface
     ) {
 
         if (RetrofitFactory.judgmentNetWork(mContext)) {
-            RetrofitFactory.createMainRetrofit().submitForgetPsw(
+            RetrofitFactory.createMainRetrofit().register(
                 phone = phone,
                 password = psw,
-                captcha = code
+                captcha = code,
+                invite = invite
             )
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())

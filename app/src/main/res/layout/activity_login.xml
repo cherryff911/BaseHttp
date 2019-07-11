@@ -115,8 +115,6 @@
     <Button
             android:text="@string/login"
             android:id="@+id/btn_login"
-            android:layout_marginLeft="@dimen/dp_23"
-            android:layout_marginRight="@dimen/dp_23"
             style="@style/btn_17_bule"
             android:layout_marginTop="@dimen/dp_54"
            />
