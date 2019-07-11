@@ -59,10 +59,10 @@ public class CommonInterceptor implements Interceptor {
                 sbJson.append(line);
                 line = reader.readLine();
             } while (line != null);
-            Log.i("拦截数据===", "respone="+JSON.parse(sbJson.toString()));
+            Log.i("拦截数据===", "respone=" + JSON.parse(sbJson.toString()));
         } catch (Exception e) {
             e.printStackTrace();
-            Log.i("拦截数据===", "respone="+JSON.parse(e.getMessage()), e);
+            Log.i("拦截数据===", "respone=" + JSON.parse(e.getMessage()), e);
         }
 //        saveCookies(response, request.url().toString());
         return response;
@@ -98,11 +98,13 @@ public class CommonInterceptor implements Interceptor {
     private void hearParamers(Request newRequest) {
         StringBuffer buffer = new StringBuffer();
         RequestBody body = newRequest.body();
-        FormBody frombody = (FormBody) newRequest.body();
-        buffer.append(newRequest.url().toString() + "\n");
-        if (frombody.size() > 0) {
-            for (int i = 0; i < frombody.size(); i++) {
-                buffer.append("[" + frombody.encodedName(i) + "=" + frombody.encodedValue(i) + "]");
+        if (newRequest.body() instanceof FormBody) {
+            FormBody frombody = (FormBody) newRequest.body();
+            buffer.append(newRequest.url().toString() + "\n");
+            if (frombody.size() > 0) {
+                for (int i = 0; i < frombody.size(); i++) {
+                    buffer.append("[" + frombody.encodedName(i) + "=" + frombody.encodedValue(i) + "]");
+                }
             }
         }
         Log.i("请求数据==", buffer.toString());

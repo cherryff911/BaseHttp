@@ -56,7 +56,6 @@ interface MainRequest {
     ): Observable<BaseEntity<String>>
 
     //首页
-    @FormUrlEncoded
     @POST("api/index")
     fun requestHomeData(): Observable<BaseEntity<HomeDataVo>>
 

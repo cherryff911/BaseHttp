@@ -128,7 +128,8 @@ object NetServer : BaseHttp() {
      */
     fun requestHomeData(mContext: Context,respone: StringResultInterface){
         if (RetrofitFactory.judgmentNetWork(mContext)) {
-            RetrofitFactory.createMainRetrofit().requestHomeData().observeOn(AndroidSchedulers.mainThread())
+            RetrofitFactory.createMainRetrofit().requestHomeData()
+                .observeOn(AndroidSchedulers.mainThread())
                 .subscribeOn(Schedulers.io())
                 .subscribe(RxJaveObserver(
                     success = {

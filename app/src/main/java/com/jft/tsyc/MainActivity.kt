@@ -43,7 +43,6 @@ class MainActivity : BaseActivity() {
         mFragmentList.add(find)
         mFragmentList.add(information)
         mFragmentList.add(me)
-        val adapter = GuideAdapter(supportFragmentManager, mFragmentList)
         val mSfm = supportFragmentManager
         for (fragment in mFragmentList) {
             val transcation = mSfm.beginTransaction()
