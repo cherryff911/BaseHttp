@@ -52,7 +52,7 @@ object UserDbHelp {
     /**
      * 添加用户信息
      */
-    fun addUseInfomData(key: String, userName: String, state: Int) {
+    fun addUseInfomData(key: String, userName: String, state: Int,userId:Int) {
         isRead()
         mSqLiteDatabase!!.delete(GmDBHelp.TABLE_NAME, null, null)
         mSqLiteDatabase!!.beginTransaction()
@@ -61,6 +61,8 @@ object UserDbHelp {
             conVal.put(DbKey.key, key)
             conVal.put(DbKey.name, userName)
             conVal.put(DbKey.state, state.toString())
+            conVal.put(DbKey.userId, userId.toString())
+            conVal.put(DbKey.guider, "1")
             mSqLiteDatabase!!.insert(GmDBHelp.TABLE_NAME, null, conVal)
             mSqLiteDatabase!!.setTransactionSuccessful()
         } catch (e: Exception) {
@@ -119,8 +121,8 @@ object UserDbHelp {
             val conVal = ContentValues()
             conVal.put(DbKey.hear, hear)
             mSqLiteDatabase!!.update(
-                GmDBHelp.TABLE_NAME, conVal, "${DbKey.userId}=?",
-                arrayOf(userInfom.userId)
+                GmDBHelp.TABLE_NAME, conVal, "${DbKey.key}=?",
+                arrayOf(userInfom.key)
             )
             mSqLiteDatabase!!.setTransactionSuccessful()
         } catch (e: Exception) {
@@ -158,8 +160,8 @@ object UserDbHelp {
             conVal.put(DbKey.extend, ifVert)
             conVal.put(DbKey.carPlateColourId, carPlateColourId)
             mSqLiteDatabase!!.update(
-                GmDBHelp.TABLE_NAME, conVal, "${DbKey.userId}=?",
-                arrayOf(userInfom.userId)
+                GmDBHelp.TABLE_NAME, conVal, "${DbKey.key}=?",
+                arrayOf(userInfom.key)
             )
             mSqLiteDatabase!!.setTransactionSuccessful()
         } catch (e: Exception) {
@@ -186,8 +188,8 @@ object UserDbHelp {
             contvalue.put(DbKey.idnumber, number)
             contvalue.put(DbKey.hear, portrait)
             mSqLiteDatabase!!.update(
-                GmDBHelp.TABLE_NAME, contvalue, "${DbKey.userId}=?"
-                , arrayOf(userInfom.userId)
+                GmDBHelp.TABLE_NAME, contvalue, "${DbKey.key}=?"
+                , arrayOf(userInfom.key)
             )
             mSqLiteDatabase!!.setTransactionSuccessful()
         } catch (e: Exception) {
@@ -217,8 +219,8 @@ object UserDbHelp {
             contvalue.put(DbKey.ifDriver, str)
             contvalue.put(DbKey.role, role)
             mSqLiteDatabase!!.update(
-                GmDBHelp.TABLE_NAME, contvalue, "${DbKey.userId}=?"
-                , arrayOf(userInfom.userId)
+                GmDBHelp.TABLE_NAME, contvalue, "${DbKey.key}=?"
+                , arrayOf(userInfom.key)
             )
             mSqLiteDatabase!!.setTransactionSuccessful()
         } catch (e: Exception) {
@@ -244,8 +246,8 @@ object UserDbHelp {
             contvalue.put(DbKey.plateNumber, plateNumber)
             contvalue.put(DbKey.carPlateColourId, carPlateColourId)
             mSqLiteDatabase!!.update(
-                GmDBHelp.TABLE_NAME, contvalue, "${DbKey.userId}=?"
-                , arrayOf(userInfom.userId)
+                GmDBHelp.TABLE_NAME, contvalue, "${DbKey.key}=?"
+                , arrayOf(userInfom.key)
             )
             mSqLiteDatabase!!.setTransactionSuccessful()
         } catch (e: Exception) {
@@ -287,12 +289,12 @@ object UserDbHelp {
         val content = ContentValues()
         content.put(DbKey.guider, look)
         val userInfom = getUserInfom()
-        if (userInfom == null || StringUtil.isEmpty(userInfom.userId))
+        if (userInfom == null || StringUtil.isEmpty(userInfom.key))
             mSqLiteDatabase!!.insert(GmDBHelp.TABLE_NAME, null, content)
         else {
             mSqLiteDatabase!!.update(
-                GmDBHelp.TABLE_NAME, content, "${DbKey.userId}=?",
-                arrayOf(userInfom.userId)
+                GmDBHelp.TABLE_NAME, content, "${DbKey.key}=?",
+                arrayOf(userInfom.key)
             )
         }
     }

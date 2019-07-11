@@ -9,6 +9,7 @@
         tools:context=".MainActivity">
     <FrameLayout
             android:layout_weight="1"
+            android:id="@+id/fragment_main_content"
             android:layout_width="match_parent"
             android:layout_height="0dp"/>
     <RadioGroup
@@ -24,17 +25,18 @@
                 android:drawableTop="@drawable/select_main_home"
                 android:id="@+id/rdb_select_home"
                 style="@style/home_check_stype"
+                android:checked="true"
                 android:text="首页"/>
 
         <RadioButton
                 android:drawableTop="@drawable/select_main_find"
-                android:id="@+id/rdb_select_good"
+                android:id="@+id/rdb_select_find"
                 style="@style/home_check_stype"
                 android:text="发现"/>
 
         <RadioButton
                 android:drawableTop="@drawable/select_main_information"
-                android:id="@+id/rdb_select_odd"
+                android:id="@+id/rdb_select_infom"
                 style="@style/home_check_stype"
                 android:text="消息"/>
 

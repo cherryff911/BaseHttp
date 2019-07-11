@@ -15,6 +15,7 @@ import com.jft.tsyc.mvp.Model.CodeModel
 import com.jft.tsyc.mvp.Model.RegisterModel
 import com.jft.tsyc.mvp.Presenter.CodePresenter
 import com.jft.tsyc.mvp.Presenter.RegisterPresenter
+import com.jft.tsyc.vo.LoginVo
 import com.jft.tsyc.vo.RegisterVo
 import kotlinx.android.synthetic.main.activity_register.*
 
@@ -86,9 +87,9 @@ class RegisterActivity : BaseActivity(), RegisterContract.View, CodeContract.Vie
     }
 
     override fun RegisterSuccess(t: Any?) {
-        val data = t as RegisterVo
+        val data = t as LoginVo
         DataMessageVo.UserInfom = data
-        UserDbHelp.addUseInfomData(data.key, data.username, data.state)
+        UserDbHelp.addUseInfomData(data.key, data.username, data.state,data.userid)
         mResultTo.toMainAc()
     }
 

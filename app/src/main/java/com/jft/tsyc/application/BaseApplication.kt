@@ -16,10 +16,10 @@ import com.tencent.bugly.crashreport.CrashReport
  * @Time :2019/7/5 16:44
  * @Purpose :
  */
-class MyApplication : Application() {
+class BaseApplication : Application() {
     companion object{
-        private var instance: MyApplication? = null
-        fun toInstance(): MyApplication {
+        private var instance: BaseApplication? = null
+        fun toInstance(): BaseApplication {
             return instance!!
         }
 

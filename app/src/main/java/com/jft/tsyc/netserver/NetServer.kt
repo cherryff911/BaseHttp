@@ -4,6 +4,7 @@ import android.content.Context
 import com.backpacker.UtilsLibrary.net.BaseServiceUtil
 import com.jft.tsyc.base.BaseHttp
 import com.jft.tsyc.base.DataMessageVo
+import com.jft.tsyc.db.vo.DbKey.phone
 import com.jft.tsyc.mvp.ResultView.StringResultInterface
 import com.jft.tsyc.retrofit.MainRequest
 import com.jft.tsyc.retrofit.RetrofitFactory
@@ -120,6 +121,26 @@ object NetServer : BaseHttp() {
                     })
                 )
         }
+    }
+
+    /**
+     * 请求首页数据
+     */
+    fun requestHomeData(mContext: Context,respone: StringResultInterface){
+        if (RetrofitFactory.judgmentNetWork(mContext)) {
+            RetrofitFactory.createMainRetrofit().requestHomeData().observeOn(AndroidSchedulers.mainThread())
+                .subscribeOn(Schedulers.io())
+                .subscribe(RxJaveObserver(
+                    success = {
+                        respone.Success(it.data)
+                    }, error = {
+                        respone.onError(it)
+                    }, complate = {
+                        respone.onComplise()
+                    })
+                )
+        }
+
     }
 
 }

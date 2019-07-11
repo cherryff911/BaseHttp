@@ -1,15 +1,17 @@
 package com.jft.tsyc.fragment.home
 
-import android.content.Context
-import android.net.Uri
 import android.os.Bundle
-import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
+import com.backpacker.UtilsLibrary.kotlin.RecyclerUtils
 
 import com.jft.tsyc.R
+import com.jft.tsyc.adapter.home.HomeAdapter
 import com.jft.tsyc.base.BaseFragment
+import com.jft.tsyc.mvp.Contract.HomeContract
+import com.jft.tsyc.mvp.Model.HomeModel
+import com.jft.tsyc.mvp.Presenter.HomePresenter
+import com.jft.tsyc.vo.HomeDataVo
+import kotlinx.android.synthetic.main.gm_refresh_layout.*
 
 
 private const val ARG_PARAM1 = "param1"
@@ -22,11 +24,11 @@ private const val ARG_PARAM2 = "param2"
  * @Time :2019/7/10 16:59
  * @Purpose :首页
  */
-class HomeFragment : BaseFragment() {
-
+class HomeFragment : BaseFragment(), HomeContract.View {
 
     private var param1: String? = null
     private var param2: String? = null
+    private var mPresenter: HomePresenter? = null
 
     companion object {
 
@@ -53,5 +55,56 @@ class HomeFragment : BaseFragment() {
     }
 
     override fun setInitCreatedContentView(view: View, savedInstanceState: Bundle?) {
+        initRequest()
+        initRefresh()
+        gm_SmartRefreshLayout.autoRefresh()
     }
+
+    private fun initRequest() {
+        mPresenter = HomePresenter()
+        mPresenter!!.initMvp(this, HomeModel())
+    }
+
+    private fun initRefresh() {
+        gm_SmartRefreshLayout.setEnableLoadMore(false)
+        gm_SmartRefreshLayout.setEnableAutoLoadMore(false)
+        gm_SmartRefreshLayout.apply {
+            setOnRefreshListener {
+                loadNewData()
+            }
+            setOnLoadMoreListener {
+            }
+        }
+    }
+
+    private fun loadNewData() {
+        mPresenter!!.requestHome(mContext)
+    }
+
+    override fun HomeSuccess(t: Any?) {
+        val data = t as HomeDataVo
+        if (gm_SmartRefreshLayout != null)
+            gm_SmartRefreshLayout.finishRefresh()
+        initAdapter(data)
+    }
+
+    private fun initAdapter(data: HomeDataVo) {
+        val adapter = HomeAdapter(mContext, data)
+        RecyclerUtils.setMangager(mContext, gm_rlv_content)
+        gm_rlv_content.adapter = adapter
+    }
+
+    override fun HomeError(ex: Throwable) {
+        this.onError(ex)
+        if (gm_SmartRefreshLayout != null)
+            gm_SmartRefreshLayout.finishRefresh()
+    }
+
+    override fun HomeComplise() {
+        this.onComplate()
+        if (gm_SmartRefreshLayout != null)
+            gm_SmartRefreshLayout.finishRefresh()
+
+    }
+
 }

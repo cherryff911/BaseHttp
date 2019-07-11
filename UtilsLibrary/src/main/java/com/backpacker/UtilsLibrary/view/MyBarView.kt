@@ -22,8 +22,8 @@ class MyBarView:View{
     override fun onMeasure(widthMeasureSpec: Int, heightMeasureSpec: Int) {
         super.onMeasure(widthMeasureSpec, heightMeasureSpec)
         setMeasuredDimension(
-            Constant.screenHeight,
-            Constant.screenWidth
+            Constant.screenWidth,
+            Constant.statusHeight
         )
     }
 

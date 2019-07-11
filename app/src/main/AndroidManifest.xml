@@ -15,14 +15,13 @@
             android:allowBackup="true"
             android:icon="@mipmap/ic_launcher"
             android:label="@string/app_name"
-            android:name=".application.MyApplication"
+            android:name=".application.BaseApplication"
             android:roundIcon="@mipmap/ic_launcher_round"
             android:supportsRtl="true"
-            android:theme="@style/AppNoBarTheme">
-        <activity android:name=".ui.login.BindPhoneActivity">
-        </activity>
-        <activity android:name=".ui.login.ForgetActivity">
-        </activity>
+            android:theme="@style/MyAppTheme">
+        <activity android:name=".ui.login.BindPhoneActivity"/>
+        <activity android:name=".MainActivity"/>
+        <activity android:name=".ui.login.ForgetActivity"/>
         <activity
                 android:name=".ui.login.RegisterActivity"
                 android:launchMode="singleTask"

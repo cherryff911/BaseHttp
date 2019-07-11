@@ -12,13 +12,13 @@ import androidx.recyclerview.widget.RecyclerView
  * @Time :2019/7/4 16:46
  * @Purpose :列表工具类
  */
- abstract class RecyclerUtils(var mContext:Context) {
+ object RecyclerUtils {
     /**
      * @METHOD 设置竖向管理器
      * @param rlv
      */
     @SuppressLint("WrongConstant")
-    open fun setMangager(rlv: RecyclerView) {
+    open fun setMangager(mContext:Context,rlv: RecyclerView) {
         var layout = GridLayoutManager(mContext, 1)
         layout.orientation=GridLayoutManager.VERTICAL
         rlv.layoutManager = layout
@@ -27,7 +27,7 @@ import androidx.recyclerview.widget.RecyclerView
     /**
      * 设置横向管理器
      */
-    open fun setHorizontalMangager(rlv: RecyclerView) {
+    open fun setHorizontalMangager(mContext:Context,rlv: RecyclerView) {
         var layout = GridLayoutManager(mContext, 1)
         layout.orientation = GridLayoutManager.HORIZONTAL
         rlv.layoutManager = layout
@@ -36,7 +36,7 @@ import androidx.recyclerview.widget.RecyclerView
     /**
      * 设置竖向管理器
      */
-    open fun setMangager(rlv: RecyclerView, number: Int, orientai: Int) {
+    open fun setMangager(mContext:Context,rlv: RecyclerView, number: Int, orientai: Int) {
         var layout = GridLayoutManager(mContext, number)
         layout.orientation = orientai
         rlv.layoutManager = layout

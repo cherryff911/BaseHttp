@@ -1,4 +1,4 @@
-package com.backpacker.UtilsLibrary.Vo;
+package com.backpacker.UtilsLibrary.vo;
 
 /**
  * @version V 1.0 xxxxxxxx

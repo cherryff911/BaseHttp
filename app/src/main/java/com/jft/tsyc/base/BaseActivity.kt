@@ -1,5 +1,6 @@
 package com.jft.tsyc.base
 
+import android.graphics.Color
 import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
@@ -12,6 +13,11 @@ import com.backpacker.UtilsLibrary.net.HttpBaseResult
 import com.backpacker.UtilsLibrary.view.MyProgreeDialog
 import com.jft.tsyc.manage.ResultActivityTo
 import kotlinx.android.synthetic.main.gm_title_layout.*
+import java.lang.reflect.Array.setInt
+import java.lang.reflect.AccessibleObject.setAccessible
+import android.os.Build
+import android.view.WindowManager
+
 
 /**
  * @Author : YFL  is Creating a porject in tsyc
@@ -29,6 +35,7 @@ abstract class BaseActivity : AppCompatActivity() {
     protected abstract fun onInitCreateView(savedInstanceState: Bundle?)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        window.decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_LAYOUT_STABLE or View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
         setContentView(setInitContentView())
         mContext = this
         progressDialog = MyProgreeDialog(this)

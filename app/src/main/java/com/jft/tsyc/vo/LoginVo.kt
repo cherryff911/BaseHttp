@@ -10,8 +10,9 @@ import com.jft.tsyc.base.BaseVo
  * @Purpose :登录vo
  */
 data class LoginVo(
-    val key: String,
-    val userid: Int,
-    val username: String
+    val key: String="",
+    val userid: Int=0,
+    val username: String="",
+    val state:Int=0
 )
 

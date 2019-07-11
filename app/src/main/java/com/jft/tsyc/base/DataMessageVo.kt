@@ -1,5 +1,6 @@
 package com.jft.tsyc.base
 
+import com.jft.tsyc.vo.LoginVo
 import com.jft.tsyc.vo.RegisterVo
 
 /**
@@ -26,7 +27,7 @@ object DataMessageVo {
     val Code_revise: String = "5"
     //招聘绑定手机号
     val Code_advertise: String = "6"
-    var UserInfom: RegisterVo? = null
+    var UserInfom: LoginVo? = null
 
 
 }

@@ -75,6 +75,8 @@
                       android:background="@color/transparent"
                       android:hint="@string/please_input_code"
                       style="@style/text_15_gray"
+                      android:maxLength="6"
+                      android:inputType="number"
                       android:layout_marginLeft="@dimen/dp_16"
                       android:id="@+id/et_register_code"
                       android:layout_centerVertical="true"

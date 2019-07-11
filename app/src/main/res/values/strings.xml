@@ -6,6 +6,7 @@
     <string name="please_input_psw" translatable="false">请输入密码</string>
     <string name="account_lift" translatable="false">还没有账号?</string>
     <string name="account_right" translatable="false">忘记密码?</string>
+    <string name="account_right_one" translatable="false">忘记密码</string>
     <string name="login" translatable="false">登录</string>
     <string name="weixin_login" translatable="false">微信快捷登录</string>
     <string name="register" translatable="false">立即注册</string>

@@ -16,7 +16,7 @@ import android.text.TextUtils
 import android.telephony.TelephonyManager
 import android.net.ConnectivityManager
 import android.net.Uri
-import com.backpacker.UtilsLibrary.Vo.Constants
+import com.backpacker.UtilsLibrary.vo.Constants
 import android.util.DisplayMetrics
 
 

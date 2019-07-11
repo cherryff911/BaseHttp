@@ -7,6 +7,7 @@ import com.jft.tsyc.mvp.Contract.LoginContract
 import com.jft.tsyc.mvp.Model.LoginModel
 import com.jft.tsyc.mvp.Presenter.LoginPresenter
 import com.jft.tsyc.R
+import com.jft.tsyc.db.UserDbHelp
 import com.jft.tsyc.vo.LoginVo
 import kotlinx.android.synthetic.main.activity_login.*
 
@@ -55,7 +56,7 @@ class LoginActivity : BaseActivity(), LoginContract.View {
         }
         //忘记密码
         tv_login_no_psw.setOnClickListener {
-          mResultTo.toForgetAc(getStringWithId(R.string.account_right))
+            mResultTo.toForgetAc(getStringWithId(R.string.account_right_one))
         }
         //微信登录
         ll_weixin_login.setOnClickListener {
@@ -76,7 +77,9 @@ class LoginActivity : BaseActivity(), LoginContract.View {
 
     override fun LoginSuccess(t: Any?) {
         val data = t as LoginVo
-        mResultTo.toRegisterAc()
+        val help = UserDbHelp.get_Instance(mContext)
+        help!!.addUseInfomData(data.key, data.username, 0, data.userid)
+        mResultTo.toMainAc()
     }
 
     override fun LoginError(ex: Throwable) {

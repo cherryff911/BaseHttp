@@ -6,7 +6,7 @@ import android.net.ConnectivityManager;
 import android.net.Network;
 import android.net.NetworkInfo;
 import android.view.Window;
-import com.backpacker.UtilsLibrary.Vo.Constants;
+import com.backpacker.UtilsLibrary.vo.Constants;
 
 import java.lang.reflect.Field;
 

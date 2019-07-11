@@ -6,6 +6,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import com.backpacker.UtilsLibrary.kotlin.AppManager.Companion.appManager
+import com.backpacker.UtilsLibrary.kotlin.PermissionUtils
+import com.backpacker.UtilsLibrary.kotlin.T
+import com.backpacker.UtilsLibrary.kotlin.Util
+import com.backpacker.UtilsLibrary.net.HttpBaseResult
+import com.backpacker.UtilsLibrary.view.MyProgreeDialog
 import com.jft.tsyc.manage.ResultFragmentTo
 
 /**
@@ -20,6 +26,7 @@ abstract class BaseFragment : Fragment() {
     abstract fun setContentView(): Int
     lateinit var mResultTo: ResultFragmentTo
     lateinit var mContext:Activity
+    lateinit var progressDialog: MyProgreeDialog
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -32,6 +39,42 @@ abstract class BaseFragment : Fragment() {
         mResultTo = ResultFragmentTo(this.activity!!)
         setInitCreatedContentView(view, savedInstanceState)
         mContext= this.activity!!
+        progressDialog = MyProgreeDialog(mContext)
+    }
+    private fun test() {
+        PermissionUtils.showPermission(mContext, "", arrayOf("")) {
+
+        }
     }
 
+
+    fun showProgress() {
+        Util.showDialog(progressDialog)
+    }
+
+    fun dismissProgress() {
+        Util.dismissDialog(progressDialog)
+    }
+
+    fun onError(ex: Throwable) {
+        dismissProgress()
+        HttpBaseResult.onError(mContext, ex)
+    }
+
+    fun onComplate() {
+        dismissProgress()
+        HttpBaseResult.onComplate()
+    }
+
+    fun getStringWithId(id: Int): String {
+        return mContext.resources.getString(id)
+    }
+
+    fun toShowToasct(content: String) {
+        T.showToast(mContext, content)
+    }
+
+    open fun onHomeBack(v: View) {
+        mResultTo.finishBase()
+    }
 }

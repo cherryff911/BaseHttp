@@ -11,7 +11,7 @@ import androidx.fragment.app.FragmentManager
  * @version V 1.0 xxxxxxxx
  * @verdescript  版本号 修改时间  修改人 修改的概要说明 * @Copyright: 2019
  */
-object FrgmentUtil {
+object FragmentUtil {
     /**
      * @param sfm    fragment管理器
      * @param list   fragment集合
