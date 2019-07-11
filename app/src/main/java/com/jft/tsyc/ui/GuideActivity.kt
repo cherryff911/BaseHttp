@@ -2,6 +2,7 @@ package com.jft.tsyc.ui
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
+import com.backpacker.UtilsLibrary.java.StringUtil
 import com.jft.tsyc.base.BaseActivity
 import com.jft.tsyc.R
 import com.jft.tsyc.adapter.GuideAdapter
@@ -25,13 +26,22 @@ class GuideActivity : BaseActivity() {
     }
 
     override fun onInitCreateView(savedInstanceState: Bundle?) {
-        if (isStartApp()) {
-            finish()
-            mResultTo.toLoginAc()
-            return
-        }
-        initFragment()
-        initEvent()
+       when(isStartApp()){
+           0->{
+               initFragment()
+               initEvent()
+           }
+           1->{
+               finish()
+               mResultTo.toLoginAc()
+           }
+           2->{
+               finish()
+               mResultTo.toMainAc()
+           }
+       }
+
+
     }
 
     fun initEvent() {
@@ -42,13 +52,21 @@ class GuideActivity : BaseActivity() {
         }
     }
 
-    fun isStartApp(): Boolean {
+    /**
+     * @return 0 启动引导页 1 登陆 2 主界面
+     */
+    fun isStartApp(): Int {
         val help = UserDbHelp.get_Instance(mContext)
         val infom = help!!.getUserInfom()
         if (infom == null || infom!!.guider != "1") {
-            return false
+            if (StringUtil.isEmpty(infom!!.key)){
+                return 2
+            }else{
+                return 1
+            }
+
         }
-        return true
+        return 0
     }
 
     fun initFragment() {

@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
               android:orientation="vertical"
+              android:background="@color/main_home_bg"
               android:layout_width="match_parent"
-              android:layout_height="match_parent">
-    <com.backpacker.UtilsLibrary.view.MyBarView android:layout_width="match_parent"
-                                                android:layout_height="wrap_content"/>
-    <LinearLayout android:layout_width="match_parent"
+              android:paddingBottom="@dimen/dp_10"
+              android:layout_height="wrap_content">
+        <LinearLayout android:layout_width="match_parent"
                   android:orientation="vertical"
                   android:background="@mipmap/jft_img_toppage"
                   android:layout_height="@dimen/dp_200">
@@ -25,6 +25,7 @@
                           android:background="@color/transparent"
                           android:hint="请输入您要搜索的内容"
                           style="@style/text_15_gray"
+                          android:id="@+id/et_home_input"
                           android:textColorHint="@color/white"
                           android:layout_toRightOf="@id/iv_home_search"
                           android:layout_height="match_parent"/>
@@ -39,9 +40,42 @@
                        android:layout_height="match_parent"/>
         </LinearLayout>
         <com.youth.banner.Banner android:layout_width="match_parent"
+                                android:layout_marginTop="@dimen/dp_8"
+                                 android:id="@+id/item_main_home_banner"
                                  android:layout_marginLeft="@dimen/dp_13"
                                  android:layout_marginRight="@dimen/dp_13"
                                  android:layout_height="150dp"/>
 
+
+    </LinearLayout>
+    <LinearLayout android:layout_width="match_parent"
+                  android:orientation="horizontal"
+                  android:background="@color/white"
+                  android:layout_marginTop="@dimen/dp_13"
+                  android:paddingRight="@dimen/dp_10"
+                  android:paddingLeft="@dimen/dp_10"
+                  android:layout_marginLeft="@dimen/dp_13"
+                  android:layout_marginRight="@dimen/dp_13"
+                  android:layout_height="@dimen/dp_48">
+
+        <ImageView android:layout_width="wrap_content"
+                   android:layout_gravity="center_vertical"
+                   android:src="@mipmap/jft_img_headlines"
+                   android:layout_height="match_parent"/>
+        <ImageView android:layout_width="wrap_content"
+                   android:layout_gravity="center_vertical"
+                   android:layout_marginLeft="@dimen/dp_13"
+                   android:src="@mipmap/jft_but_notice"
+                   android:layout_height="wrap_content"/>
+        <ViewFlipper
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/viewflipper"
+                android:flipInterval="3000"
+                android:layout_marginLeft="@dimen/dp_5"
+                android:inAnimation="@anim/roll_in"
+                android:outAnimation="@anim/roll_out"
+                android:autoStart="true">
+        </ViewFlipper>
     </LinearLayout>
 </LinearLayout>

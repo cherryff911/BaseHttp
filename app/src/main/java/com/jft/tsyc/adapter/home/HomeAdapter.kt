@@ -5,12 +5,22 @@ import android.os.Build.VERSION_CODES.M
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.EditText
+import android.widget.ImageView
+import android.widget.TextView
+import android.widget.ViewFlipper
 import androidx.recyclerview.widget.RecyclerView
 import com.chad.library.adapter.base.BaseQuickAdapter
 import com.jft.tsyc.R
 import com.jft.tsyc.db.UserDbHelp.mContext
 import com.jft.tsyc.vo.HomeDataVo
 import com.tencent.bugly.proguard.m
+import com.youth.banner.Banner
+import com.youth.banner.BannerConfig
+import com.youth.banner.loader.ImageLoader
+import com.youth.banner.loader.ImageLoaderInterface
+import com.zzzh.akhalteke.utils.GlideUtil
+import java.util.ArrayList
 
 /**
  * @Author : YFL  is Creating a porject in tsyc
@@ -19,7 +29,7 @@ import com.tencent.bugly.proguard.m
  * @Time :2019/7/10 17:12
  * @Purpose :首页适配器
  */
-class HomeAdapter(val mContext: Context, data: HomeDataVo): RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+class HomeAdapter(val mContext: Context, var mData: HomeDataVo) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
     private val MAIN_BANNER: Int = 1001//轮播图
     private val MAIN_WARE: Int = 1002//商品
     private val MAIN_SELLER: Int = 1003//商家
@@ -56,6 +66,27 @@ class HomeAdapter(val mContext: Context, data: HomeDataVo): RecyclerView.Adapter
 
     }
 
+    override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
+        when (holder) {
+            is BannerViewHodle -> {
+                initBanner(holder as BannerViewHodle)
+            }
+            is WAREViewHodle -> {
+                initWare(holder as WAREViewHodle)
+            }
+            is SELLERViewHodle -> {
+                initSellerv(holder as SELLERViewHodle)
+            }
+            is JOBViewHodle -> {
+                initJob(holder as JOBViewHodle)
+            }
+            is COMPETITIVEViewHodle -> {
+                initCompetitive(holder as COMPETITIVEViewHodle)
+            }
+        }
+
+    }
+
     override fun getItemCount(): Int {
         return 5
     }
@@ -85,31 +116,98 @@ class HomeAdapter(val mContext: Context, data: HomeDataVo): RecyclerView.Adapter
 
     }
 
-    override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
-
-    }
 
     /**
      * 轮播图
      */
     inner class BannerViewHodle(var item: View) : RecyclerView.ViewHolder(item) {
+        val mViewFlipper = item.findViewById<ViewFlipper>(R.id.viewflipper)
+        val mBanner = item.findViewById<Banner>(R.id.item_main_home_banner)
+        val mIvSearch = item.findViewById<ImageView>(R.id.iv_home_search)
+        val mIvScan = item.findViewById<ImageView>(R.id.iv_home_scan)
+        val mEtInput = item.findViewById<EditText>(R.id.et_home_input)
+
 
     }
 
     fun initBanner(holder: BannerViewHodle) {
+        setFlipper(holder)
+        setBanner(holder)
+    }
 
+    private fun setBanner(holder: BannerViewHodle) {
+        val imgs = ArrayList<String>()
+        val banner = mData.banner
+        if (!banner.isNullOrEmpty()) {
+            for (item in banner) {
+                imgs.add(item.url)
+            }
+        }
+        holder.mBanner.setBannerStyle(BannerConfig.NOT_INDICATOR)
+        holder.mBanner.setIndicatorGravity(BannerConfig.CENTER)
+        holder.mBanner.setDelayTime(2000)
+        holder.mBanner.setImageLoader(object : ImageLoader() {
+            override fun displayImage(context: Context, path: Any, imageView: ImageView) {
+                imageView.scaleType = ImageView.ScaleType.FIT_XY
+                GlideUtil.loadQuadRangleImager(context, imageView, path.toString())
+            }
+        })
+        holder.mBanner.setImages(imgs)
+        holder.mBanner.start()
+        holder.mBanner.setOnBannerListener {
+
+        }
+    }
+
+    //字体轮播
+    private fun setFlipper(holder: BannerViewHodle) {
+        val childView = View.inflate(mContext, R.layout.item_viewflipper, null)
+        val tv_content = childView.findViewById<TextView>(R.id.tv_advertisingone)
+        tv_content.text = "222222222222222222"
+        holder.mViewFlipper.addView(childView)
+        holder.mViewFlipper.startFlipping()
     }
 
     /**
      * 商品
      */
     inner class WAREViewHodle(var item: View) : RecyclerView.ViewHolder(item) {
-
+        val mTvRightTitle = item.findViewById<TextView>(R.id.tv_item_home_right_title)
+        val mTvRightType = item.findViewById<TextView>(R.id.tv_item_home_right_type)
+        val mTvRightContent = item.findViewById<TextView>(R.id.tv_item_home_right_content)
+        val mIvRightContent = item.findViewById<ImageView>(R.id.iv_item_right_content)
+        val mTvLiftOneTitle = item.findViewById<TextView>(R.id.tv_item_home_lift_one_title)
+        val mTvLiftOneContent = item.findViewById<TextView>(R.id.tv_item_home_lift_one_content)
+        val mTvLiftOneType = item.findViewById<TextView>(R.id.tv_item_home_lift_one_type)
+        val mIvLiftOne = item.findViewById<ImageView>(R.id.iv_home_lift_one)
+        val mTvLiftTwoTitle = item.findViewById<TextView>(R.id.tv_item_home_lift_two_title)
+        val mTvLiftTwoContent = item.findViewById<TextView>(R.id.tv_item_home_lift_two_content)
+        val mTvLiftTwoType = item.findViewById<TextView>(R.id.tv_item_home_lift_two_type)
+        val mIvLiftTwo = item.findViewById<ImageView>(R.id.iv_item_home_lift_two)
+        val mIvSellerGo = item.findViewById<ImageView>(R.id.iv_home_seller_go)
+        val mIvMoneyGo = item.findViewById<ImageView>(R.id.iv_home_money_go)
     }
 
     fun initWare(holde: WAREViewHodle) {
-
+        val recommend = mData.recommend
+        val rightItem = recommend!![0]
+        holde.mTvRightTitle.text = rightItem.name
+        holde.mTvRightContent.text = rightItem.note
+        holde.mTvRightType.text = rightItem.types
+        GlideUtil.LoadImager(mContext, holde.mIvRightContent, rightItem.image)
+        val liftItem = recommend!![1]
+        holde.mTvLiftOneTitle.text = liftItem.name
+        holde.mTvLiftOneContent.text = liftItem.note
+        holde.mTvLiftOneType.text = liftItem.types
+        GlideUtil.LoadImager(mContext, holde.mIvLiftOne, liftItem.image)
+        val liftTwoItem = recommend!![2]
+        holde.mTvLiftTwoTitle.text = liftTwoItem.name
+        holde.mTvLiftTwoContent.text = liftTwoItem.note
+        holde.mTvLiftTwoType.text = liftTwoItem.types
+        GlideUtil.LoadImager(mContext, holde.mIvLiftTwo, liftTwoItem.image)
     }
+
+
 
     /***
      * 商家

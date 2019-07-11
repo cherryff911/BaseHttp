@@ -10,4 +10,7 @@
     <color name="main_bg">#f4f4f4</color>
     <color name="main_text9">#999999</color>
     <color name="main_titel_bg">#F9F9F9</color>
+    <color name="main_home_bg">#F1F4F8</color>
+    <color name="text_main_bg">#444A53</color>
+    <color name="text_fu_bg">#9CA3AF</color>
 </resources>

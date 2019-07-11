@@ -97,5 +97,38 @@
         <item name="android:layout_marginRight">@dimen/dp_30</item>
         <item name="android:layout_height">@dimen/dp_48</item>
     </style>
-
+    <style name="item_home_tag">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:padding">@dimen/dp_8</item>
+        <item name="android:textColor">@color/text_main_bg</item>
+        <item name="android:gravity">center</item>
+        <item name="android:drawablePadding">@dimen/dp_8</item>
+        <item name="android:textSize">@dimen/text_12</item>
+        <item name="android:layout_height">match_parent</item>
+    </style>
+    <style name="text_12_fu">
+        <item name="android:textSize">@dimen/text_12</item>
+        <item name="android:textColor">@color/text_fu_bg</item>
+    </style>
+    <style name="text_12_main">
+        <item name="android:textSize">@dimen/text_12</item>
+        <item name="android:textColor">@color/text_main_bg</item>
+    </style>
+    <style name="text_15_main">
+        <item name="android:textSize">@dimen/text_15</item>
+        <item name="android:textColor">@color/text_main_bg</item>
+    </style>
+    <style name="text_11_white">
+        <item name="android:textSize">@dimen/text_11</item>
+        <item name="android:textColor">@color/white</item>
+    </style>
+    <style name="text_11_fu">
+        <item name="android:textSize">@dimen/text_11</item>
+        <item name="android:textColor">@color/text_fu_bg</item>
+    </style>
+    <style name="text_18_main">
+        <item name="android:textSize">@dimen/text_18</item>
+        <item name="android:textColor">@color/text_main_bg</item>
+    </style>
 </resources>

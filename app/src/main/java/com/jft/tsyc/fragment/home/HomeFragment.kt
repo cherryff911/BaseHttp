@@ -85,6 +85,9 @@ class HomeFragment : BaseFragment(), HomeContract.View {
         val data = t as HomeDataVo
         if (gm_SmartRefreshLayout != null)
             gm_SmartRefreshLayout.finishRefresh()
+        gm_SmartRefreshLayout.setEnableRefresh(true)
+        gm_SmartRefreshLayout.setEnableAutoLoadMore(false)
+        gm_SmartRefreshLayout.setEnableLoadMore(false)
         initAdapter(data)
     }
 
