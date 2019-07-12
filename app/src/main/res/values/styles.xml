@@ -96,6 +96,8 @@
         <item name="android:layout_marginLeft">@dimen/dp_30</item>
         <item name="android:layout_marginRight">@dimen/dp_30</item>
         <item name="android:layout_height">@dimen/dp_48</item>
+        <item name="android:textColorHint">@color/text_fu_bg</item>
+        <item name="android:textColor">@color/text_main_bg</item>
     </style>
     <style name="item_home_tag">
         <item name="android:layout_width">0dp</item>
@@ -130,5 +132,19 @@
     <style name="text_18_main">
         <item name="android:textSize">@dimen/text_18</item>
         <item name="android:textColor">@color/text_main_bg</item>
+    </style>
+    <style name="text_10_yellow">
+        <item name="android:textColor">@color/yellow_one</item>
+        <item name="android:textSize">@dimen/text_10</item>
+    </style>
+    <style name="text_16_yellow">
+        <item name="android:textColor">@color/yellow_one</item>
+        <item name="android:textSize">@dimen/text_16</item>
+    </style>
+    <style name="star">
+        <item name="android:layout_width">@dimen/dp_10</item>
+        <item name="android:layout_marginLeft">@dimen/dp_2</item>
+        <item name="android:layout_height">@dimen/dp_10</item>
+        <item name="android:src">@mipmap/jft_icon_atinybit</item>
     </style>
 </resources>

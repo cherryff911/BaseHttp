@@ -8,13 +8,13 @@ package com.jft.tsyc.vo
  * @Purpose :首页数据
  */
 data class HomeDataVo(
-    val banner: List<Banner>?=null,
-    val goods: List<Good>?=null,
-    val position: List<Position>?=null,
-    val recommend: List<Recommend>?=null,
-    val store: List<Store>?=null
+    val banner: MutableList<Banner>?=null,
+    val goods: MutableList<Good>?=null,
+    val position: MutableList<Position>?=null,
+    val recommend: MutableList<Recommend>?=null,
+    val store: MutableList<Store>?=null
 )
-
+//商家
 data class Position(
     val address: String="",
     val contact: String="",
@@ -25,14 +25,14 @@ data class Position(
     val name: String="",
     val salary: String=""
 )
-
+//推荐
 data class Recommend(
     val image: String="",
     val name: String="",
     val note: String="",
     val types: String=""
 )
-
+//精选
 data class Good(
     val commission_money: String="",
     val commission_text: String="",
@@ -49,7 +49,7 @@ data class Good(
     val share_text: String="",
     val store_id: Int=0
 )
-
+//商店
 data class Store(
     val address: String="",
     val category_tab: String="",

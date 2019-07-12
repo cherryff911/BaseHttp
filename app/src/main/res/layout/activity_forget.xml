@@ -31,7 +31,8 @@
                   android:layout_height="@dimen/dp_48">
         <EditText android:layout_width="match_parent"
                   android:id="@+id/et_forget_code"
-                  android:textColor="@color/gray"
+                  android:textColor="@color/text_main_bg"
+                  android:textColorHint="@color/text_fu_bg"
                   android:textSize="@dimen/text_15"
                   android:layout_weight="1"
                   android:inputType="number"

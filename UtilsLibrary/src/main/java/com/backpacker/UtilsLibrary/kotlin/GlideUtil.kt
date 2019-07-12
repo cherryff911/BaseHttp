@@ -2,6 +2,7 @@ package com.zzzh.akhalteke.utils
 
 import android.content.Context
 import android.widget.ImageView
+import com.backpacker.UtilsLibrary.kotlin.RoundCorner
 import com.backpacker.UtilsLibrary.kotlin.StringUtil
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.engine.DiskCacheStrategy
@@ -55,8 +56,19 @@ object GlideUtil {
         }
         val roundedCorners = RoundedCorners(10);
         //通过RequestOptions扩展功能,override:采样率,因为ImageView就这么大,可以压缩图片,降低内存消耗
-        // RequestOptions options = RequestOptions.bitmapTransform(roundedCorners).override(300, 300);
+//         RequestOptions options = RequestOptions.bitmapTransform(roundedCorners).override(300, 300);
+//        val override = RequestOptions.bitmapTransform(roundedCorners).override(300, 300)
         val options = RequestOptions.bitmapTransform(roundedCorners);
+//        val float=8.0f
+//        val options = RequestOptions.bitmapTransform(
+//            RoundCorner(
+//                context,
+//                leftTop = float,
+//                rightBottom = float,
+//                rightTop = float,
+//                leftBottom = float
+//            )
+//        )
         Glide.with(context)
                 .load(path)
                 .apply(options)

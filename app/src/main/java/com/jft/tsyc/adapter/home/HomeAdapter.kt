@@ -10,6 +10,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import android.widget.ViewFlipper
 import androidx.recyclerview.widget.RecyclerView
+import com.backpacker.UtilsLibrary.kotlin.RecyclerUtils
 import com.chad.library.adapter.base.BaseQuickAdapter
 import com.jft.tsyc.R
 import com.jft.tsyc.db.UserDbHelp.mContext
@@ -208,27 +209,32 @@ class HomeAdapter(val mContext: Context, var mData: HomeDataVo) : RecyclerView.A
     }
 
 
-
     /***
      * 商家
      */
     inner class SELLERViewHodle(var item: View) : RecyclerView.ViewHolder(item) {
-
+        val mRlvItemContent = item.findViewById<RecyclerView>(R.id.rlv_item_home_seller_content)
     }
 
     fun initSellerv(holder: SELLERViewHodle) {
-
+        val store = mData.store
+        RecyclerUtils.setMangager(mContext, holder.mRlvItemContent)
+        val adapter = SellerListAdapter(mContext, store!!)
+        holder.mRlvItemContent.adapter = adapter
     }
 
     /***
      * 职位
      */
     inner class JOBViewHodle(var item: View) : RecyclerView.ViewHolder(item) {
-
+        val mRlvItemContent = item.findViewById<RecyclerView>(R.id.rlv_item_home_job_content)
     }
 
     fun initJob(holder: JOBViewHodle) {
-
+        val store = mData.position
+        RecyclerUtils.setMangager(mContext, holder.mRlvItemContent)
+        val adapter = PositionListAdapter(mContext, store!!)
+        holder.mRlvItemContent.adapter = adapter
     }
 
     /**

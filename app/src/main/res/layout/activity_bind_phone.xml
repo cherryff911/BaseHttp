@@ -31,9 +31,10 @@
                   android:layout_height="@dimen/dp_48">
         <EditText android:layout_width="match_parent"
                   android:id="@+id/et_bind_code"
-                  android:textColor="@color/gray"
+                  android:textColor="@color/text_main_bg"
                   android:textSize="@dimen/text_15"
                   android:layout_weight="1"
+                  android:textColorHint="@color/text_fu_bg"
                   android:inputType="number"
                   android:background="@color/transparent"
                   android:hint="@string/please_input_phone_code"

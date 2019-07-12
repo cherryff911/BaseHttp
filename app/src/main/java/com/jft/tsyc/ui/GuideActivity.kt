@@ -26,20 +26,20 @@ class GuideActivity : BaseActivity() {
     }
 
     override fun onInitCreateView(savedInstanceState: Bundle?) {
-       when(isStartApp()){
-           0->{
-               initFragment()
-               initEvent()
-           }
-           1->{
-               finish()
-               mResultTo.toLoginAc()
-           }
-           2->{
-               finish()
-               mResultTo.toMainAc()
-           }
-       }
+        when (isStartApp()) {
+            0 -> {
+                initFragment()
+                initEvent()
+            }
+            1 -> {
+                finish()
+                mResultTo.toLoginAc()
+            }
+            2 -> {
+                finish()
+                mResultTo.toMainAc()
+            }
+        }
 
 
     }
@@ -58,15 +58,13 @@ class GuideActivity : BaseActivity() {
     fun isStartApp(): Int {
         val help = UserDbHelp.get_Instance(mContext)
         val infom = help!!.getUserInfom()
-        if (infom == null || infom!!.guider != "1") {
-            if (StringUtil.isEmpty(infom!!.key)){
-                return 2
-            }else{
-                return 1
-            }
-
+        if (infom == null || infom!!.guider != "1") {//是否进入引导页
+            return 1
         }
-        return 0
+        if (!StringUtil.isEmpty(infom.key)) {//登录过
+            return 2
+        }
+        return 0//第一启动
     }
 
     fun initFragment() {

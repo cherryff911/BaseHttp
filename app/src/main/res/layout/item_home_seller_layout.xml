@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content">
+    <LinearLayout android:layout_width="match_parent"
+                  android:orientation="horizontal"
+                  android:padding="@dimen/dp_10"
+                  android:layout_height="wrap_content">
+        <ImageView android:layout_width="90dp"
+                   android:id="@+id/iv_item_home_seller_img"
+                   android:layout_height="87dp"/>
+        <LinearLayout android:layout_width="match_parent"
+                      android:orientation="vertical"
+                      android:layout_marginLeft="@dimen/dp_10"
+                      android:layout_height="match_parent">
+            <TextView android:layout_width="wrap_content"
+                      style="@style/text_15_main"
+                      android:text="商店名称"
+                      android:id="@+id/tv_item_home_seller_name"
+                      android:layout_height="wrap_content"/>
+            <LinearLayout android:layout_width="match_parent"
+                          android:orientation="horizontal"
+                          android:layout_marginTop="@dimen/dp_4"
+                          android:layout_height="wrap_content">
+                <LinearLayout android:layout_width="wrap_content"
+                              android:orientation="horizontal"
+                              android:gravity="center_vertical"
+                              android:layout_height="@dimen/dp_12">
+                    <ImageView
+                            android:id="@+id/iv_item_home_seller_star_one"
+                            style="@style/star"/>
+                    <ImageView
+                            android:id="@+id/iv_item_home_seller_star_two"
+                            style="@style/star"/>
+                    <ImageView
+                            android:id="@+id/iv_item_home_seller_star_three"
+                            style="@style/star"/>
+                    <ImageView
+                            android:id="@+id/iv_item_home_seller_star_four"
+                            style="@style/star"/>
+                    <ImageView
+                            android:id="@+id/iv_item_home_seller_star_five"
+                            style="@style/star"/>
+                    <TextView android:layout_width="wrap_content"
+                              style="@style/text_10_yellow"
+                              android:singleLine="true"
+                              android:id="@+id/tv_item_home_seller_tag"
+                              android:layout_marginLeft="@dimen/dp_4"
+                              android:layout_height="match_parent"/>
+
+                </LinearLayout>
+
+            </LinearLayout>
+            <TextView android:layout_width="match_parent"
+                      style="@style/text_12_fu"
+                      android:text="222222222222"
+                      android:gravity="center_vertical"
+                      android:singleLine="true"
+                      android:ellipsize="end"
+                      android:id="@+id/tv_item_home_seller_address"
+                      android:drawablePadding="@dimen/dp_4"
+                      android:layout_marginTop="@dimen/dp_12"
+                      android:drawableLeft="@mipmap/jft_icon_address"
+                      android:layout_height="@dimen/dp_20"/>
+
+        </LinearLayout>
+    </LinearLayout>
+    <View style="@style/line_height_1_margin_30"/>
+</LinearLayout>
