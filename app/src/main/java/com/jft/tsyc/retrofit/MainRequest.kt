@@ -1,10 +1,7 @@
 package com.jft.tsyc.retrofit
 
 import com.backpacker.UtilsLibrary.kotlin.BaseEntity
-import com.jft.tsyc.vo.CodeVo
-import com.jft.tsyc.vo.HomeDataVo
-import com.jft.tsyc.vo.LoginVo
-import com.jft.tsyc.vo.RegisterVo
+import com.jft.tsyc.vo.*
 import io.reactivex.Observable
 import retrofit2.Call
 import retrofit2.http.Field
@@ -54,9 +51,13 @@ interface MainRequest {
         @Field("captcha") captcha: String,
         @Field("password") password: String
     ): Observable<BaseEntity<String>>
-
     //首页
+    @FormUrlEncoded
     @POST("api/index")
     fun requestHomeData(): Observable<BaseEntity<HomeDataVo>>
+//    我的
+    @FormUrlEncoded
+    @POST("api/Member/index")
+    fun reqeustMeData():Observable<BaseEntity<MeVo>>
 
 }

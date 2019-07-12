@@ -52,14 +52,14 @@ class GuideFragment : BaseFragment() {
     override fun setInitCreatedContentView(view: View, savedInstanceState: Bundle?) {
         when (param1) {
             "0" -> {
-                SetUtils.setImagerSrc(iv_guide_content, R.mipmap.timg)
+                SetUtils.setImagerSrc(iv_guide_content, R.mipmap.ic_page_one)
             }
             "1" -> {
-                SetUtils.setImagerSrc(iv_guide_content, R.mipmap.timg)
+                SetUtils.setImagerSrc(iv_guide_content, R.mipmap.ic_page_one)
 
             }
             "2" -> {
-                SetUtils.setImagerSrc(iv_guide_content, R.mipmap.timg)
+                SetUtils.setImagerSrc(iv_guide_content, R.mipmap.ic_page_one)
                 iv_guide_content.setOnClickListener {
 
                     if (mContext is GuideActivity) {

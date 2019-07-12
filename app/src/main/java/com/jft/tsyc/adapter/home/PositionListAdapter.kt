@@ -1,15 +1,20 @@
 package com.jft.tsyc.adapter.home
 
 import android.content.Context
+import android.view.LayoutInflater
 import android.view.View
 import android.widget.ImageView
+import android.widget.LinearLayout
 import android.widget.TextView
+import com.backpacker.UtilsLibrary.java.StringUtil
+import com.backpacker.UtilsLibrary.view.FlowLayout
 import com.chad.library.adapter.base.BaseQuickAdapter
 import com.chad.library.adapter.base.BaseViewHolder
 import com.jft.tsyc.R
 import com.jft.tsyc.vo.Position
 import com.jft.tsyc.vo.Store
 import com.zzzh.akhalteke.utils.GlideUtil
+import org.w3c.dom.Text
 
 /**
  * @Author : YFL  is Creating a porject in tsyc
@@ -22,46 +27,43 @@ class PositionListAdapter(var context: Context, var infoList: MutableList<Positi
     BaseQuickAdapter<Position, BaseViewHolder>(R.layout.item_home_job_layout, infoList) {
     override fun convert(helper: BaseViewHolder?, item: Position?) {
         val position = helper!!.layoutPosition
-        val ivOneStar = helper.getView<ImageView>(R.id.iv_item_home_seller_star_one)
-        val ivTwoStar = helper.getView<ImageView>(R.id.iv_item_home_seller_star_two)
-        val ivThreeStar = helper.getView<ImageView>(R.id.iv_item_home_seller_star_three)
-        val ivfourStar = helper.getView<ImageView>(R.id.iv_item_home_seller_star_four)
-        val ivfiveStar = helper.getView<ImageView>(R.id.iv_item_home_seller_star_five)
-        val ivImg = helper.getView<ImageView>(R.id.iv_item_home_seller_img)
-        val tvName = helper.getView<TextView>(R.id.tv_item_home_seller_name)
-        val tvTag = helper.getView<TextView>(R.id.tv_item_home_seller_tag)
-        val tvAddress = helper.getView<TextView>(R.id.tv_item_home_seller_address)
-        val list = mutableListOf<ImageView>()
-        list.add(ivOneStar)
-        list.add(ivTwoStar)
-        list.add(ivThreeStar)
-        list.add(ivfourStar)
-        list.add(ivfiveStar)
-//        showStart(list, item!!.store_grade)
-//        GlideUtil.loadQuadRangleImager(mContext, ivImg, item.image)
-//        tvName.text = item.store_name
-//        tvTag.text = item.share_info
-//        tvAddress.text = item.address
+        val tvTitle = helper.getView<TextView>(R.id.tv_item_home_job_title)
+        val tvMoney = helper.getView<TextView>(R.id.tv_item_home_job_money)
+        val tvCompany = helper.getView<TextView>(R.id.tv_item_home_job_company)
+        val flTag = helper.getView<FlowLayout>(R.id.fl_item_home_job_tag)
+        val ivHear = helper.getView<ImageView>(R.id.iv_item_home_job_hear)
+        val tvName = helper.getView<TextView>(R.id.tv_item_home_job_name)
 
+        item.let {
+            tvTitle.text = it!!.name
+            tvCompany.text = it.detail
+            tvMoney.text = it.salary
+            tvName.text = it.contact
+            GlideUtil.LoadImager(mContext, ivHear, it.logo)
+            val data = mutableListOf<String>()
+            if (!StringUtil.isEmpty(it.address)) {
+                data.add(it.address)
+            }
+            if (!StringUtil.isEmpty(it.experience)) {
+                data.add(it.experience)
+            }
+            if (!StringUtil.isEmpty(it.educational)) {
+                data.add(it.educational)
+            }
+            setFlayout(data, flTag)
+        }
 
     }
 
-    /**
-     * @param mImags 展示的集合
-     * @param number 显示几个
-     */
-    private fun showStart(mImags: MutableList<ImageView>, number: Int) {
-        for (index in 0 until mImags.size) {
-            if (index <= number - 1) {
-                showOrHine(mImags[index], true)
-            } else {
-                showOrHine(mImags[index], false)
-            }
+    private fun setFlayout(mdata: MutableList<String>, fl: FlowLayout) {
+        if (mdata.isNullOrEmpty()) return
+        fl.removeAllViews()
+        for (item in mdata) {
+            val view = LayoutInflater.from(mContext).inflate(R.layout.item_home_postion_flaout, null)
+            val tvContent = view.findViewById<TextView>(R.id.tv_item_flayout_content)
+            tvContent.text = item
+            fl.addView(view)
         }
     }
 
-    private fun showOrHine(iv: ImageView, show: Boolean) {
-        iv.visibility = if (show) View.VISIBLE else View.GONE
-
-    }
 }

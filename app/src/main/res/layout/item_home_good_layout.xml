@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+             android:orientation="vertical"
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content">
+    <LinearLayout android:layout_width="match_parent"
+                  android:orientation="vertical"
+                  android:padding="@dimen/dp_10"
+                  android:layout_marginTop="@dimen/dp_4"
+                  android:background="@drawable/gm_circle_white_bg"
+                  android:layout_height="wrap_content">
+        <ImageView android:layout_width="140dp"
+                   android:id="@+id/iv_item_home_good_img"
+                   android:layout_height="140dp"/>
+
+        <TextView android:layout_width="match_parent"
+                  style="@style/text_12_main"
+                  android:gravity="center"
+                  android:text="标题"
+                  android:layout_marginTop="@dimen/dp_4"
+                  android:id="@+id/tv_item_home_good_title"
+                  android:layout_height="wrap_content"/>
+        <LinearLayout android:layout_width="match_parent"
+                      android:orientation="horizontal"
+                      android:layout_marginTop="@dimen/dp_10"
+                      android:layout_height="wrap_content">
+            <TextView android:layout_width="wrap_content"
+                      style="@style/text_10_fu"
+                      android:text="内容"
+                      android:id="@+id/tv_item_home_good_type"
+                      android:layout_height="wrap_content"/>
+            <TextView android:layout_width="wrap_content"
+                      style="@style/text_10_fu"
+                      android:id="@+id/tv_item_home_good_number"
+                      android:text="内容"
+                      android:layout_marginLeft="@dimen/dp_10"
+                      android:layout_height="wrap_content"/>
+            <TextView android:layout_width="wrap_content"
+                      style="@style/text_10_yellow"
+                      android:text="内容"
+                      android:gravity="center"
+                      android:id="@+id/tv_item_home_good_tag"
+                      android:paddingRight="@dimen/dp_4"
+                      android:paddingLeft="@dimen/dp_4"
+                      android:minWidth="@dimen/dp_40"
+                      android:background="@drawable/gm_circle_yellow_bg"
+                      android:layout_marginLeft="@dimen/dp_10"
+                      android:layout_height="wrap_content"/>
+
+        </LinearLayout>
+        <LinearLayout android:layout_width="match_parent"
+                      android:layout_height="wrap_content">
+
+            <TextView android:layout_width="wrap_content"
+                      android:text=""
+                      style="@style/text_17_red"
+                      android:textStyle="bold"
+                      android:id="@+id/tv_item_home_good_money"
+                      android:gravity="center"
+                      android:layout_height="@dimen/dp_30"/>
+            <LinearLayout android:layout_width="wrap_content"
+                          android:orientation="horizontal"
+                          android:gravity="center"
+                          android:layout_marginLeft="@dimen/dp_8"
+                          android:layout_gravity="center"
+                          android:paddingLeft="@dimen/dp_8"
+                          android:paddingRight="@dimen/dp_8"
+                          android:background="@drawable/gm_red_qian_circle_bg"
+                          android:layout_height="@dimen/dp_20">
+                <TextView android:layout_width="@dimen/dp_16"
+                          android:text=""
+                          style="@style/text_7_white"
+                          android:gravity="center"
+                          android:layout_marginTop="@dimen/dp_1"
+                          android:layout_marginBottom="@dimen/dp_1"
+                          android:textStyle="bold"
+                          android:id="@+id/tv_item_home_good_money_tag"
+                          android:padding="@dimen/dp_3"
+                          android:background="@drawable/gm_red_circle_bg"
+                          android:layout_height="@dimen/dp_16"/>
+
+                <TextView android:layout_width="wrap_content"
+                          style="@style/text_8_red"
+                          android:textStyle="bold"
+                          android:text=""
+                          android:id="@+id/tv_item_home_good_money_money"
+                          android:layout_marginLeft="@dimen/dp_4"
+                          android:layout_marginRight="@dimen/dp_4"
+                          android:layout_height="wrap_content"/>
+                <TextView android:layout_width="wrap_content"
+                          style="@style/text_8_red"
+                          android:text=""
+                          android:id="@+id/tv_item_home_good_money_type"
+                          android:textStyle="bold"
+                          android:layout_marginRight="@dimen/dp_4"
+                          android:layout_height="wrap_content"/>
+
+            </LinearLayout>
+        </LinearLayout>
+
+    </LinearLayout>
+
+</FrameLayout>

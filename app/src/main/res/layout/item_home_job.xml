@@ -38,6 +38,5 @@
             android:layout_marginTop="@dimen/dp_10"
             style="@style/margin_16"
             android:id="@+id/rlv_item_home_job_content"
-            android:background="@color/white"
             android:layout_height="wrap_content"/>
 </LinearLayout>

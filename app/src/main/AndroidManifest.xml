@@ -45,7 +45,7 @@
         <activity
                 android:name=".ui.GuideActivity"
                 android:launchMode="singleTask"
-                android:theme="@style/MyAppTheme">
+                android:theme="@style/AppThemeGuider">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 

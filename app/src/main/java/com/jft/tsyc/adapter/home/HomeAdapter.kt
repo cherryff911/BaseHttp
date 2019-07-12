@@ -9,6 +9,7 @@ import android.widget.EditText
 import android.widget.ImageView
 import android.widget.TextView
 import android.widget.ViewFlipper
+import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.backpacker.UtilsLibrary.kotlin.RecyclerUtils
 import com.chad.library.adapter.base.BaseQuickAdapter
@@ -241,10 +242,14 @@ class HomeAdapter(val mContext: Context, var mData: HomeDataVo) : RecyclerView.A
      * 精品
      */
     inner class COMPETITIVEViewHodle(var item: View) : RecyclerView.ViewHolder(item) {
-
+        val mRlvItemContent = item.findViewById<RecyclerView>(R.id.rlv_competitive_content)
     }
 
     fun initCompetitive(holder: COMPETITIVEViewHodle) {
+        val store = mData.goods
+        RecyclerUtils.setMangager(mContext, holder.mRlvItemContent, 2, GridLayoutManager.VERTICAL)
+        val adapter = GoodListAdapter(mContext, store!!)
+        holder.mRlvItemContent.adapter = adapter
 
     }
 
