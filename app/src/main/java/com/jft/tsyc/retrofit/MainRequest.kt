@@ -52,7 +52,7 @@ interface MainRequest {
         @Field("password") password: String
     ): Observable<BaseEntity<String>>
     //首页
-    @FormUrlEncoded
+//    @FormUrlEncoded
     @POST("api/index")
     fun requestHomeData(): Observable<BaseEntity<HomeDataVo>>
 //    我的
